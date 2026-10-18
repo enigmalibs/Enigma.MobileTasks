@@ -17,6 +17,6 @@ Row order is the intended build order — the topmost `TODO` is built first.
 | - PHASE06    | Checklist page and editing            | DONE   | (in FEATURE-3478.md)      |
 | - PHASE07    | JSON import and export                | DONE   | (in FEATURE-3478.md)      |
 | - PHASE08    | Settings page and README              | DONE   | (in FEATURE-3478.md)      |
-| BUG-7F85     | Checkboxes misaligned with their text | TODO   | docs/plan/BUG-7F85.md     |
+| BUG-7F85     | Checkboxes misaligned with their text | DONE   | docs/plan/BUG-7F85.md     |
 | FEATURE-0CA0 | Rename the app to "Enigma tasks"      | TODO   | docs/plan/FEATURE-0CA0.md |
 | FEATURE-6F1B | Release 1.1.0 and signed APK guide    | TODO   | docs/plan/FEATURE-6F1B.md |

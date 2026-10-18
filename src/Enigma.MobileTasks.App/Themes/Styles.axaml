@@ -216,6 +216,13 @@
     <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
   </Style>
 
+  <!-- Fluent draws the box in a 32-pixel strip pinned to the top of the control, sized for its own
+       32-pixel CheckBox. In a 48-pixel row that leaves the box 8 pixels above the centred label;
+       centring the strip puts both on the row's middle, whatever the font. -->
+  <Style Selector="CheckBox.row /template/ Grid#RootGrid > Grid">
+    <Setter Property="VerticalAlignment" Value="Center" />
+  </Style>
+
   <!-- A ticked row steps back: what is left to do is what the page is for. -->
   <Style Selector="CheckBox.row:checked TextBlock.label">
     <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundSecondaryBrush}" />
@@ -283,6 +290,11 @@
     <Setter Property="Padding" Value="12,0,8,0" />
     <Setter Property="Margin" Value="8,0" />
     <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <!-- The same top-pinned strip as CheckBox.row's, around the radio's circle: centred the same way. -->
+  <Style Selector="RadioButton.setting /template/ Border#RootBorder > Grid > Grid">
+    <Setter Property="VerticalAlignment" Value="Center" />
   </Style>
 
   <!-- The transient message at the bottom of the screen. -->
