@@ -10,7 +10,7 @@ Row order is the intended build order — the topmost `TODO` is built first.
 |--------------|------------------------------------|-------------|---------------------------|
 | FEATURE-3478 | Enigma.MobileTasks Android app     | IN PROGRESS | docs/plan/FEATURE-3478.md |
 | - PHASE01    | Scaffold, model and operations     | DONE        | (in FEATURE-3478.md)      |
-| - PHASE02    | JSON file format and compatibility | TODO        | (in FEATURE-3478.md)      |
+| - PHASE02    | JSON file format and compatibility | DONE        | (in FEATURE-3478.md)      |
 | - PHASE03    | Device storage and settings        | TODO        | (in FEATURE-3478.md)      |
 | - PHASE04    | App shell, theme and Android head  | TODO        | (in FEATURE-3478.md)      |
 | - PHASE05    | Lists page                         | TODO        | (in FEATURE-3478.md)      |

@@ -13,4 +13,11 @@
   <ItemGroup>
     <ProjectReference Include="../../src/Enigma.MobileTasks.Core/Enigma.MobileTasks.Core.csproj" />
   </ItemGroup>
+  <!-- Fixture copy-glob: the reference list the suite loads by relative path next to the test
+       assembly. -->
+  <ItemGroup>
+    <None Update="**/*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
