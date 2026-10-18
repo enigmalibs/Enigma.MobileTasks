@@ -11,7 +11,8 @@ namespace Enigma.MobileTasks.App.Resources;
 public static class Strings
 {
     /// <summary>The application's name, as the launcher shows it.</summary>
-    public const string AppName = "Lists";
+    /// <remarks>The Android head repeats it in its manifest labels; change them together.</remarks>
+    public const string AppName = "Enigma tasks";
 
     /// <summary>The Lists page's header.</summary>
     public const string ListsHeader = "Lists";
@@ -224,7 +225,7 @@ public static class Strings
     public const string AboutSection = "About";
 
     /// <summary>The version line; {0} is the version.</summary>
-    public const string VersionLine = "Enigma.MobileTasks {0}";
+    public const string VersionLine = AppName + " {0}";
 
     /// <summary>What the app is compatible with.</summary>
     public const string AboutHint =

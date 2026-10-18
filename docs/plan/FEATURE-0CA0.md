@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** DONE
 **Type:** FEATURE
 **Branch:** feature/feature-0ca0-app-name
 **Run:** bugfix/2026-10-18-checkbox-rename-release

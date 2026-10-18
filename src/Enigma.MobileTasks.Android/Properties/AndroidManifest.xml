@@ -5,5 +5,5 @@
      which grants access to the one file the user picks (a Debug build adds INTERNET by itself, for
      the debugger). -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto">
-  <application android:label="Lists" android:icon="@drawable/icon" />
+  <application android:label="Enigma tasks" android:icon="@drawable/icon" />
 </manifest>

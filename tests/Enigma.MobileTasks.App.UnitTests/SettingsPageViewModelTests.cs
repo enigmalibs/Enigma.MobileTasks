@@ -117,12 +117,18 @@ public sealed class SettingsPageViewModelTests(HeadlessAvaloniaFixture fixture)
         Assert.Equal("1 lists, kept in this app's private storage on the phone.", page.StorageSummary);
     }
 
+    /// <summary>
+    /// The About line names the app as the launcher does, with the solution's version — read from
+    /// this test assembly, which <c>Directory.Build.props</c> versions like every other, so a release
+    /// never has to edit the test.
+    /// </summary>
     [Fact]
-    public void TheVersionLine_IsTheSolutionsVersion()
+    public void TheVersionLine_IsTheAppsNameAndTheSolutionsVersion()
     {
         using TempApp app = new(RecordingNavigation.Register);
+        string version = typeof(SettingsPageViewModelTests).Assembly.GetName().Version!.ToString(3);
 
-        Assert.Equal("Enigma.MobileTasks 1.0.0", app.Get<SettingsPageViewModel>().VersionText);
+        Assert.Equal("Enigma tasks " + version, app.Get<SettingsPageViewModel>().VersionText);
     }
 
     [Fact]
