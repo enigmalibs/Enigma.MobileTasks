@@ -18,9 +18,13 @@
     <RootNamespace>Enigma.MobileTasks.Android</RootNamespace>
 
     <!-- Unique on a device; the GitHub organisation in the conventional io.github.<org> form, as the
-         house's mobile showcase does it. -->
+         house's mobile showcase does it. It is the installed app's identity and the key to its private
+         storage — it does not follow the display name: a new id would install a second app and leave
+         the lists behind in the first. -->
     <ApplicationId>io.github.enigmalibs.mobiletasks</ApplicationId>
-    <ApplicationTitle>Lists</ApplicationTitle>
+    <!-- The name the launcher shows. Also written in MainActivity's Label and the manifest's
+         android:label; change the three together. -->
+    <ApplicationTitle>Enigma tasks</ApplicationTitle>
     <!-- versionCode must grow with every installable build; versionName follows the solution's
          Version (Directory.Build.props). -->
     <ApplicationVersion>1</ApplicationVersion>

@@ -14,7 +14,7 @@ namespace Enigma.MobileTasks.Android;
 /// and re-themes in place instead of the activity being torn down with its navigation stack.
 /// </remarks>
 [Activity(
-    Label = "Lists",
+    Label = "Enigma tasks",
     Theme = "@style/EnigmaMobileTasksTheme",
     Icon = "@drawable/icon",
     MainLauncher = true,
