@@ -52,6 +52,7 @@ public static class ServiceCollectionExtensions
         {
             services.AddSingleton<IActiveListService, ActiveListService>();
             services.AddSingleton<IListActions, ListActions>();
+            services.AddSingleton<IListEditor, ListEditor>();
 
             services.AddSingleton<DialogService>();
             services.AddSingleton<IDialogService>(provider => provider.GetRequiredService<DialogService>());
