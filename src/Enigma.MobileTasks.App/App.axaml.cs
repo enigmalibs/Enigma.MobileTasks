@@ -111,6 +111,17 @@ public partial class App : Application
         shell.DataContext = viewModel;
         shell.NavigationHost.Page = services.GetRequiredService<INavigationService>().CreateRoot();
 
+        // The system file picker belongs to the activity's top level, which exists only once the
+        // shell is on screen — and a re-created activity brings a new one.
+        StorageFilePicker picker = services.GetRequiredService<StorageFilePicker>();
+        shell.AttachedToVisualTree += (_, _) =>
+        {
+            if (TopLevel.GetTopLevel(shell) is { } topLevel)
+            {
+                picker.Attach(topLevel.StorageProvider);
+            }
+        };
+
         // Reading the lists is I/O, so it starts once there is a shell to report a problem in. It is
         // a no-op for every shell after the first.
         _ = viewModel.InitializeAsync(settingsWarning);

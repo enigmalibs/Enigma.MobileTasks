@@ -205,7 +205,7 @@ Acceptance criteria:
 
 ## PHASE07 — JSON import and export
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase07-import-export
 
 Steps:

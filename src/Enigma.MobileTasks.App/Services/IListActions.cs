@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Enigma.MobileTasks.Core.Workspace;
@@ -47,4 +48,21 @@ public interface IListActions
     /// <param name="cancellationToken">Cancels the deletion.</param>
     /// <returns><see langword="true"/> when it is gone.</returns>
     Task<bool> DeleteAsync(WorkspaceEntry entry, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Asks where to save a list, and writes it there in the JSON file format — byte for byte what
+    /// Enigma.Tasks writes, so the file imports on the desktop and on another phone.
+    /// </summary>
+    /// <param name="entry">The list to export.</param>
+    /// <param name="cancellationToken">Cancels the export.</param>
+    /// <returns><see langword="true"/> when the file was written.</returns>
+    Task<bool> ExportAsync(WorkspaceEntry entry, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Asks for one or more files and adds every readable list among them, reporting the ones that
+    /// are not.
+    /// </summary>
+    /// <param name="cancellationToken">Cancels the import.</param>
+    /// <returns>The lists added; empty when the user cancelled or nothing could be read.</returns>
+    Task<IReadOnlyList<WorkspaceEntry>> ImportAsync(CancellationToken cancellationToken = default);
 }

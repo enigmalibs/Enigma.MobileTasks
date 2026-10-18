@@ -31,6 +31,7 @@ public sealed class ListCardViewModel : ObservableObject
         OpenCommand = new AsyncRelayCommand(() => page.OpenAsync(this));
         RenameCommand = new AsyncRelayCommand(() => page.RenameAsync(this));
         DuplicateCommand = new AsyncRelayCommand(() => page.DuplicateAsync(this));
+        ExportCommand = new AsyncRelayCommand(() => page.ExportAsync(this));
         DeleteCommand = new AsyncRelayCommand(() => page.DeleteAsync(this));
 
         Refresh();
@@ -90,6 +91,11 @@ public sealed class ListCardViewModel : ObservableObject
     /// Gets the command that duplicates the list.
     /// </summary>
     public AsyncRelayCommand DuplicateCommand { get; }
+
+    /// <summary>
+    /// Gets the command that exports the list as a JSON file.
+    /// </summary>
+    public AsyncRelayCommand ExportCommand { get; }
 
     /// <summary>
     /// Gets the command that deletes the list, after asking.

@@ -158,4 +158,40 @@ public static class Strings
 
     /// <summary>The snackbar action that puts a deletion back.</summary>
     public const string Undo = "Undo";
+
+    /// <summary>The menu entry and button that exports a list.</summary>
+    public const string Export = "Export as JSON";
+
+    /// <summary>The title of the system picker that saves an exported list.</summary>
+    public const string ExportPickerTitle = "Export the list";
+
+    /// <summary>The button that imports lists.</summary>
+    public const string Import = "Import lists";
+
+    /// <summary>The empty state's import button.</summary>
+    public const string ImportFromFile = "Import from a file";
+
+    /// <summary>The title of the system picker that opens lists to import.</summary>
+    public const string ImportPickerTitle = "Import lists";
+
+    /// <summary>The name of the JSON file type in the pickers.</summary>
+    public const string JsonFileType = "JSON list";
+
+    /// <summary>The message after an export; {0} is the list, {1} the file written.</summary>
+    public const string Exported = "\"{0}\" exported as {1}.";
+
+    /// <summary>The message when an export failed; {0} is why.</summary>
+    public const string ExportFailed = "The list could not be exported: {0}";
+
+    /// <summary>The message after one list was imported; {0} is the list.</summary>
+    public const string ImportedOne = "\"{0}\" imported.";
+
+    /// <summary>The message after several lists were imported; {0} is how many.</summary>
+    public const string ImportedMany = "{0} lists imported.";
+
+    /// <summary>The message about one file that could not be imported; {0} is the file, {1} why.</summary>
+    public const string ImportRefused = "{0} could not be imported: {1}";
+
+    /// <summary>The message about several files that could not be imported; {0} is how many.</summary>
+    public const string ImportRefusedMany = "{0} files could not be imported — they are not lists this app can read.";
 }
