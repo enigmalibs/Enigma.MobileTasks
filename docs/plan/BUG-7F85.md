@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** DONE
 **Type:** BUG
 **Branch:** bugfix/bug-7f85-checkbox-alignment
 **Run:** bugfix/2026-10-18-checkbox-rename-release
