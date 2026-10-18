@@ -11,4 +11,17 @@
     <ResourceInclude Source="avares://Enigma.MobileTasks.App/Themes/Brushes.axaml" />
   </ResourceDictionary.MergedDictionaries>
 
+  <!-- FluentTheme's own CheckBox keys, re-coloured the way the desktop library re-colours TextBox
+       and ComboBox: left alone, a ticked row is painted with the phone's system accent instead of
+       the Enigma one. The key names are Fluent's contract and must stay verbatim. Kept here, not in
+       the vendored Brushes.axaml, which stays byte-identical to the desktop release. -->
+  <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillChecked" Color="{DynamicResource EnigmaAccentColor}" />
+  <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPointerOver" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="CheckBoxCheckBackgroundFillCheckedPressed" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPointerOver" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="CheckBoxCheckBackgroundStrokeCheckedPressed" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundChecked" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="#FFFFFF" />
+  <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="#FFFFFF" />
+
 </ResourceDictionary>

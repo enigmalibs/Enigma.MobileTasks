@@ -183,6 +183,98 @@
     <Setter Property="Foreground" Value="{DynamicResource EnigmaSuccessBrush}" />
   </Style>
 
+  <!-- A category card's heading, which is also the control that folds it: a button that looks like
+       a heading rather than like a button. -->
+  <Style Selector="Button.cardheader">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="12,12,0,0" />
+    <Setter Property="Padding" Value="16,12" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <Style Selector="Button.cardheader /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="12,12,0,0" />
+  </Style>
+
+  <Style Selector="Button.cardheader:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaPressedBrush}" />
+  </Style>
+
+  <!-- A checklist row. The whole row is the target — label included — and it is a thumb's height. -->
+  <Style Selector="CheckBox.row">
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Left" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Padding" Value="12,6,8,6" />
+    <Setter Property="Margin" Value="8,0,0,0" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <!-- A ticked row steps back: what is left to do is what the page is for. -->
+  <Style Selector="CheckBox.row:checked TextBlock.label">
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundSecondaryBrush}" />
+    <Setter Property="TextDecorations" Value="Strikethrough" />
+  </Style>
+
+  <!-- A toggle that reads as a state: edit mode. Same round target as Button.icon. -->
+  <Style Selector="ToggleButton.icon">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="24" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="MinWidth" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundSecondaryBrush}" />
+  </Style>
+
+  <Style Selector="ToggleButton.icon /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="24" />
+  </Style>
+
+  <Style Selector="ToggleButton.icon:checked /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaSelectionBrush}" />
+  </Style>
+
+  <Style Selector="ToggleButton.icon:checked">
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <!-- A secondary, structural action that is not the page's purpose: "Add a category". -->
+  <Style Selector="Button.outline">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderBrush" Value="{DynamicResource EnigmaBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="Padding" Value="16,12" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaAccentBrush}" />
+  </Style>
+
+  <Style Selector="Button.outline /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="12" />
+  </Style>
+
+  <Style Selector="Button.outline:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaPressedBrush}" />
+  </Style>
+
+  <!-- The quick-add box: a thumb's height, so it is as easy to hit as the rows above it. -->
+  <Style Selector="TextBox.quickadd">
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+  </Style>
+
   <!-- The transient message at the bottom of the screen. -->
   <Style Selector="Border.snackbar">
     <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceHighBrush}" />

@@ -2,6 +2,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using Avalonia.Automation;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
 using Avalonia.Headless;
 using Avalonia.LogicalTree;
 using Avalonia.Media;
@@ -109,6 +110,41 @@ public sealed class ShellRenderTests(HeadlessAvaloniaFixture fixture)
             Assert.Equal(2, root.StackDepth);
             ChecklistPage checklist = Assert.IsType<ChecklistPage>(root.NavigationStack[^1]);
             Assert.Equal("Liste Judith", checklist.Header);
+
+            window.Close();
+        });
+    }
+
+    /// <summary>
+    /// The checklist as a phone shows it: rows to tick, and in edit mode the menus and the quick-add
+    /// boxes, with the navigation bar's toggle bound to the page's edit mode.
+    /// </summary>
+    [Fact]
+    public void ChecklistPage_ShowsItsEditControlsOnlyInEditMode()
+    {
+        using TempApp app = new();
+        app.WriteRaw("liste-judith.json", TestLists.ReadJudithJson());
+
+        fixture.RunAsync(async () =>
+        {
+            ShellView shell = App.CreateShell(app.Services);
+            Window window = new() { Width = 400, Height = 800, Content = shell };
+            window.Show();
+            await app.Get<ShellViewModel>().InitializeAsync();
+            await app.Get<ListsPageViewModel>().Cards[0].OpenCommand.ExecuteAsync(null);
+            window.UpdateLayout();
+
+            ChecklistPage page = Assert.IsType<ChecklistPage>(((ShellNavigationPage)shell.NavigationHost.Page!).NavigationStack[^1]);
+            ToggleButton toggle = shell.GetVisualDescendants().OfType<ToggleButton>().Single(button => button.Name == "EditToggle");
+
+            Assert.Contains(page.GetVisualDescendants().OfType<CheckBox>(), box => box.IsChecked == true);
+            Assert.DoesNotContain(page.GetVisualDescendants().OfType<TextBox>(), box => box.IsEffectivelyVisible);
+
+            toggle.IsChecked = true;
+            window.UpdateLayout();
+
+            Assert.True(app.Get<ChecklistPageViewModel>().IsEditing);
+            Assert.Contains(page.GetVisualDescendants().OfType<TextBox>(), box => box.IsEffectivelyVisible);
 
             window.Close();
         });

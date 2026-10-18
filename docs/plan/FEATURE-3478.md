@@ -184,7 +184,7 @@ Acceptance criteria:
 
 ## PHASE06 — Checklist page and editing
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase06-checklist-page
 
 Steps:

@@ -1,4 +1,6 @@
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Media;
 using Avalonia.Styling;
 using Enigma.MobileTasks.App.UnitTests.Infrastructure;
 using Enigma.MobileTasks.Core.Settings;
@@ -44,6 +46,30 @@ public sealed class ThemeTests(HeadlessAvaloniaFixture fixture)
             Assert.NotEqual(ThemeVariant.Default, application.RequestedThemeVariant);
             Assert.Equal(App.SystemVariant(application), application.RequestedThemeVariant);
             Assert.Equal(application.RequestedThemeVariant, application.ActualThemeVariant);
+        });
+    }
+
+    /// <summary>
+    /// A ticked row is painted with the Enigma accent, not the phone's system accent Fluent would use.
+    /// </summary>
+    [Fact]
+    public void ATickedRow_UsesTheEnigmaAccent()
+    {
+        fixture.Run(() =>
+        {
+            App.ApplyTheme(ThemePreference.Light);
+
+            CheckBox box = new() { IsChecked = true };
+            Window window = new() { Content = box };
+            window.Show();
+
+            Assert.True(box.TryFindResource("CheckBoxCheckBackgroundFillChecked", box.ActualThemeVariant, out object? fill));
+            Assert.True(box.TryFindResource("EnigmaAccentColor", box.ActualThemeVariant, out object? accent));
+            window.UpdateLayout();
+            Assert.Equal(accent, Assert.IsAssignableFrom<ISolidColorBrush>(fill).Color);
+
+            window.Close();
+            App.ApplyTheme(ThemePreference.System);
         });
     }
 }

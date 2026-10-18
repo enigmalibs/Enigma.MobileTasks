@@ -9,24 +9,207 @@
              Background="{DynamicResource EnigmaBackgroundBrush}"
              Foreground="{DynamicResource EnigmaForegroundBrush}">
 
+  <NavigationPage.TopCommandBar>
+    <StackPanel x:Name="CommandBar" Orientation="Horizontal" Margin="0,0,4,0">
+      <ToggleButton x:Name="EditToggle"
+                    Classes="icon"
+                    IsChecked="{Binding IsEditing, Mode=TwoWay}"
+                    AutomationProperties.Name="{x:Static res:Strings.EditList}"
+                    ToolTip.Tip="{x:Static res:Strings.EditList}">
+        <ei:Icon Kind="PencilSimple" Size="{StaticResource IconSizeMedium}" />
+      </ToggleButton>
+      <Button Classes="icon"
+              AutomationProperties.Name="{x:Static res:Strings.MoreActions}"
+              ToolTip.Tip="{x:Static res:Strings.MoreActions}">
+        <ei:Icon Kind="DotsThreeVertical" Size="{StaticResource IconSizeMedium}" />
+        <Button.Flyout>
+          <MenuFlyout Placement="BottomEdgeAlignedRight">
+            <MenuItem Header="{x:Static res:Strings.UntickAll}" Command="{Binding UntickAllCommand}">
+              <MenuItem.Icon>
+                <ei:Icon Kind="ArrowCounterClockwise" Size="{StaticResource IconSizeSmall}" />
+              </MenuItem.Icon>
+            </MenuItem>
+            <MenuItem Header="{x:Static res:Strings.RenameListMenu}" Command="{Binding RenameListCommand}">
+              <MenuItem.Icon>
+                <ei:Icon Kind="PencilSimple" Size="{StaticResource IconSizeSmall}" />
+              </MenuItem.Icon>
+            </MenuItem>
+          </MenuFlyout>
+        </Button.Flyout>
+      </Button>
+    </StackPanel>
+  </NavigationPage.TopCommandBar>
+
   <Grid>
-    <ScrollViewer IsVisible="{Binding !IsEmpty}">
-      <ItemsControl ItemsSource="{Binding Categories}" Margin="16,8,16,96">
-        <ItemsControl.ItemTemplate>
-          <DataTemplate x:DataType="vm:CategoryCardViewModel">
-            <Border Classes="card" Margin="0,0,0,12">
-              <Grid ColumnDefinitions="*,Auto">
-                <TextBlock Classes="title" Text="{Binding Name}" VerticalAlignment="Center" />
-                <TextBlock Grid.Column="1"
-                           Classes="caption"
-                           Text="{Binding ProgressText}"
-                           VerticalAlignment="Center"
-                           Margin="12,0,0,0" />
-              </Grid>
-            </Border>
-          </DataTemplate>
-        </ItemsControl.ItemTemplate>
-      </ItemsControl>
+    <ScrollViewer IsVisible="{Binding HasCategories}">
+      <StackPanel Margin="16,12,16,96" Spacing="12">
+
+        <!-- The whole list at a glance. -->
+        <Grid ColumnDefinitions="*,Auto" Margin="4,0">
+          <ProgressBar Classes="listprogress"
+                       Classes.complete="{Binding IsComplete}"
+                       Value="{Binding Percent}"
+                       Maximum="100"
+                       VerticalAlignment="Center" />
+          <TextBlock Grid.Column="1"
+                     Classes="caption"
+                     Text="{Binding ProgressText}"
+                     VerticalAlignment="Center"
+                     Margin="12,0,0,0" />
+        </Grid>
+
+        <ItemsControl ItemsSource="{Binding Categories}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:CategoryCardViewModel">
+              <Border Classes="card" Padding="0" Margin="0,0,0,12">
+                <StackPanel>
+
+                  <!-- The heading folds the card; in edit mode the corner button carries the rest. -->
+                  <Grid ColumnDefinitions="*,Auto">
+                    <Button Classes="cardheader" Command="{Binding ToggleCollapsedCommand}">
+                      <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                        <Panel VerticalAlignment="Center">
+                          <ei:Icon Kind="CaretDown" Size="{StaticResource IconSizeSmall}" IsVisible="{Binding IsExpanded}" />
+                          <ei:Icon Kind="CaretRight" Size="{StaticResource IconSizeSmall}" IsVisible="{Binding IsCollapsed}" />
+                        </Panel>
+                        <TextBlock Grid.Column="1"
+                                   Classes="title"
+                                   Text="{Binding Name}"
+                                   VerticalAlignment="Center"
+                                   Margin="10,0,8,0" />
+                        <ei:Icon Grid.Column="2"
+                                 Kind="CheckCircle"
+                                 Weight="Fill"
+                                 Size="{StaticResource IconSizeSmall}"
+                                 Foreground="{DynamicResource EnigmaSuccessBrush}"
+                                 IsVisible="{Binding IsComplete}"
+                                 VerticalAlignment="Center"
+                                 Margin="0,0,6,0" />
+                        <TextBlock Grid.Column="3"
+                                   Classes="caption"
+                                   Text="{Binding ProgressText}"
+                                   VerticalAlignment="Center" />
+                      </Grid>
+                    </Button>
+                    <Button Grid.Column="1"
+                            Classes="icon"
+                            Margin="0,0,4,0"
+                            IsVisible="{Binding Page.IsEditing}"
+                            AutomationProperties.Name="{Binding ActionsLabel}">
+                      <ei:Icon Kind="DotsThreeVertical" Size="{StaticResource IconSizeMedium}" />
+                      <Button.Flyout>
+                        <MenuFlyout Placement="BottomEdgeAlignedRight">
+                          <MenuItem Header="{x:Static res:Strings.Rename}" Command="{Binding RenameCommand}">
+                            <MenuItem.Icon>
+                              <ei:Icon Kind="PencilSimple" Size="{StaticResource IconSizeSmall}" />
+                            </MenuItem.Icon>
+                          </MenuItem>
+                          <MenuItem Header="{x:Static res:Strings.MoveUp}" Command="{Binding MoveUpCommand}">
+                            <MenuItem.Icon>
+                              <ei:Icon Kind="ArrowUp" Size="{StaticResource IconSizeSmall}" />
+                            </MenuItem.Icon>
+                          </MenuItem>
+                          <MenuItem Header="{x:Static res:Strings.MoveDown}" Command="{Binding MoveDownCommand}">
+                            <MenuItem.Icon>
+                              <ei:Icon Kind="ArrowDown" Size="{StaticResource IconSizeSmall}" />
+                            </MenuItem.Icon>
+                          </MenuItem>
+                          <MenuItem Header="{x:Static res:Strings.UntickAll}" Command="{Binding UntickCommand}">
+                            <MenuItem.Icon>
+                              <ei:Icon Kind="ArrowCounterClockwise" Size="{StaticResource IconSizeSmall}" />
+                            </MenuItem.Icon>
+                          </MenuItem>
+                          <Separator />
+                          <MenuItem Header="{x:Static res:Strings.Delete}" Command="{Binding DeleteCommand}">
+                            <MenuItem.Icon>
+                              <ei:Icon Kind="Trash" Size="{StaticResource IconSizeSmall}" />
+                            </MenuItem.Icon>
+                          </MenuItem>
+                        </MenuFlyout>
+                      </Button.Flyout>
+                    </Button>
+                  </Grid>
+
+                  <StackPanel IsVisible="{Binding IsExpanded}" Margin="8,0,8,8">
+                    <ItemsControl ItemsSource="{Binding Items}">
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate x:DataType="vm:ItemRowViewModel">
+                          <Grid ColumnDefinitions="*,Auto">
+                            <CheckBox Classes="row" IsChecked="{Binding IsDone, Mode=TwoWay}">
+                              <TextBlock Classes="label" Text="{Binding Text}" TextWrapping="Wrap" />
+                            </CheckBox>
+                            <Button Grid.Column="1"
+                                    Classes="icon"
+                                    IsVisible="{Binding Card.Page.IsEditing}"
+                                    AutomationProperties.Name="{Binding ActionsLabel}">
+                              <ei:Icon Kind="DotsThreeVertical" Size="{StaticResource IconSizeMedium}" />
+                              <Button.Flyout>
+                                <MenuFlyout Placement="BottomEdgeAlignedRight">
+                                  <MenuItem Header="{x:Static res:Strings.Rename}" Command="{Binding RenameCommand}">
+                                    <MenuItem.Icon>
+                                      <ei:Icon Kind="PencilSimple" Size="{StaticResource IconSizeSmall}" />
+                                    </MenuItem.Icon>
+                                  </MenuItem>
+                                  <MenuItem Header="{x:Static res:Strings.MoveUp}" Command="{Binding MoveUpCommand}">
+                                    <MenuItem.Icon>
+                                      <ei:Icon Kind="ArrowUp" Size="{StaticResource IconSizeSmall}" />
+                                    </MenuItem.Icon>
+                                  </MenuItem>
+                                  <MenuItem Header="{x:Static res:Strings.MoveDown}" Command="{Binding MoveDownCommand}">
+                                    <MenuItem.Icon>
+                                      <ei:Icon Kind="ArrowDown" Size="{StaticResource IconSizeSmall}" />
+                                    </MenuItem.Icon>
+                                  </MenuItem>
+                                  <Separator />
+                                  <MenuItem Header="{x:Static res:Strings.Delete}" Command="{Binding DeleteCommand}">
+                                    <MenuItem.Icon>
+                                      <ei:Icon Kind="Trash" Size="{StaticResource IconSizeSmall}" />
+                                    </MenuItem.Icon>
+                                  </MenuItem>
+                                </MenuFlyout>
+                              </Button.Flyout>
+                            </Button>
+                          </Grid>
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <!-- Quick add: type, press Enter, type the next one — the box keeps its focus. -->
+                    <Grid ColumnDefinitions="*,Auto" Margin="4,6,0,0" IsVisible="{Binding Page.IsEditing}">
+                      <TextBox Classes="quickadd"
+                               Text="{Binding QuickAddText, Mode=TwoWay}"
+                               PlaceholderText="{x:Static res:Strings.ItemPlaceholder}"
+                               TextInputOptions.ReturnKeyType="Next">
+                        <TextBox.KeyBindings>
+                          <KeyBinding Gesture="Enter" Command="{Binding AddItemCommand}" />
+                        </TextBox.KeyBindings>
+                      </TextBox>
+                      <Button Grid.Column="1"
+                              Classes="icon"
+                              Command="{Binding AddItemCommand}"
+                              AutomationProperties.Name="{x:Static res:Strings.AddItem}">
+                        <ei:Icon Kind="Plus" Size="{StaticResource IconSizeMedium}" />
+                      </Button>
+                    </Grid>
+                  </StackPanel>
+
+                </StackPanel>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <Button Classes="outline"
+                HorizontalAlignment="Stretch"
+                IsVisible="{Binding IsEditing}"
+                Command="{Binding AddCategoryCommand}">
+          <StackPanel Orientation="Horizontal" Spacing="8" HorizontalAlignment="Center">
+            <ei:Icon Kind="Plus" Size="{StaticResource IconSizeSmall}" VerticalAlignment="Center" />
+            <TextBlock Text="{x:Static res:Strings.AddCategory}" VerticalAlignment="Center" />
+          </StackPanel>
+        </Button>
+
+      </StackPanel>
     </ScrollViewer>
 
     <StackPanel Classes="emptystate" IsVisible="{Binding IsEmpty}">
@@ -35,6 +218,12 @@
                Foreground="{DynamicResource EnigmaForegroundTertiaryBrush}"
                HorizontalAlignment="Center" />
       <TextBlock Classes="title" Text="{x:Static res:Strings.EmptyListTitle}" />
+      <TextBlock Classes="caption" Text="{x:Static res:Strings.EmptyListHint}" />
+      <Button Classes="accent"
+              HorizontalAlignment="Center"
+              Margin="0,12,0,0"
+              Command="{Binding AddCategoryCommand}"
+              Content="{x:Static res:Strings.AddCategory}" />
     </StackPanel>
   </Grid>
 

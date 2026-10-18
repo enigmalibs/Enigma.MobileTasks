@@ -95,4 +95,67 @@ public static class Strings
 
     /// <summary>The Checklist page's empty-state title.</summary>
     public const string EmptyListTitle = "This list is empty";
+
+    /// <summary>The Checklist page's empty-state explanation.</summary>
+    public const string EmptyListHint = "Add a first category — \"Clothes\", \"Pharmacy\" — then the items under it.";
+
+    /// <summary>The edit-mode toggle's accessible name.</summary>
+    public const string EditList = "Edit the list";
+
+    /// <summary>The accessible name of the Checklist page's menu button.</summary>
+    public const string MoreActions = "More actions";
+
+    /// <summary>The menu entry that unticks every item of the list or of a category.</summary>
+    public const string UntickAll = "Untick everything";
+
+    /// <summary>The menu entry that renames the open list.</summary>
+    public const string RenameListMenu = "Rename the list";
+
+    /// <summary>The button that adds a category.</summary>
+    public const string AddCategory = "Add a category";
+
+    /// <summary>The title of the dialog that names a new category.</summary>
+    public const string AddCategoryTitle = "New category";
+
+    /// <summary>The placeholder of a category-name box.</summary>
+    public const string CategoryNamePlaceholder = "Category name";
+
+    /// <summary>The title of the dialog that renames a category.</summary>
+    public const string RenameCategoryTitle = "Rename the category";
+
+    /// <summary>The title of the dialog that renames an item.</summary>
+    public const string RenameItemTitle = "Rename the item";
+
+    /// <summary>The placeholder of an item box.</summary>
+    public const string ItemPlaceholder = "Add an item";
+
+    /// <summary>The accessible name of the quick-add button.</summary>
+    public const string AddItem = "Add the item";
+
+    /// <summary>The menu entry that moves something up.</summary>
+    public const string MoveUp = "Move up";
+
+    /// <summary>The menu entry that moves something down.</summary>
+    public const string MoveDown = "Move down";
+
+    /// <summary>The title of the dialog confirming a non-empty category deletion; {0} is the category.</summary>
+    public const string DeleteCategoryTitle = "Delete \"{0}\"?";
+
+    /// <summary>The explanation of that dialog; {0} is how many items it holds.</summary>
+    public const string DeleteCategoryMessage = "It still holds {0} items. You can undo this right after.";
+
+    /// <summary>The accessible name of a category's menu button; {0} is the category.</summary>
+    public const string CategoryActionsFor = "Actions for {0}";
+
+    /// <summary>The accessible name of an item's menu button; {0} is the item.</summary>
+    public const string ItemActionsFor = "Actions for {0}";
+
+    /// <summary>The message after something was deleted; {0} is what.</summary>
+    public const string Deleted = "\"{0}\" deleted.";
+
+    /// <summary>The message after a deletion was undone; {0} is what.</summary>
+    public const string Restored = "\"{0}\" restored.";
+
+    /// <summary>The snackbar action that puts a deletion back.</summary>
+    public const string Undo = "Undo";
 }
