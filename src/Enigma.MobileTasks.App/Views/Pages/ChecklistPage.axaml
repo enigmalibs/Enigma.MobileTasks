@@ -1,0 +1,41 @@
+<ContentPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ei="https://github.com/josueclement/Enigma.Icons"
+             xmlns:res="using:Enigma.MobileTasks.App.Resources"
+             xmlns:vm="using:Enigma.MobileTasks.App.ViewModels.Pages"
+             x:Class="Enigma.MobileTasks.App.Views.Pages.ChecklistPage"
+             x:DataType="vm:ChecklistPageViewModel"
+             Header="{Binding Title}"
+             Background="{DynamicResource EnigmaBackgroundBrush}"
+             Foreground="{DynamicResource EnigmaForegroundBrush}">
+
+  <Grid>
+    <ScrollViewer IsVisible="{Binding !IsEmpty}">
+      <ItemsControl ItemsSource="{Binding Categories}" Margin="16,8,16,96">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="vm:CategoryCardViewModel">
+            <Border Classes="card" Margin="0,0,0,12">
+              <Grid ColumnDefinitions="*,Auto">
+                <TextBlock Classes="title" Text="{Binding Name}" VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1"
+                           Classes="caption"
+                           Text="{Binding ProgressText}"
+                           VerticalAlignment="Center"
+                           Margin="12,0,0,0" />
+              </Grid>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+    <StackPanel Classes="emptystate" IsVisible="{Binding IsEmpty}">
+      <ei:Icon Kind="ListPlus"
+               Size="{StaticResource IconSizeEmptyState}"
+               Foreground="{DynamicResource EnigmaForegroundTertiaryBrush}"
+               HorizontalAlignment="Center" />
+      <TextBlock Classes="title" Text="{x:Static res:Strings.EmptyListTitle}" />
+    </StackPanel>
+  </Grid>
+
+</ContentPage>

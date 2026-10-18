@@ -9,4 +9,9 @@ public enum ShellPage
     /// Every list on the phone — the root of the navigation stack.
     /// </summary>
     Lists,
+
+    /// <summary>
+    /// The open list's categories and items.
+    /// </summary>
+    Checklist,
 }

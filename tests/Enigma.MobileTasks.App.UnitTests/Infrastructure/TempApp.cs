@@ -21,7 +21,8 @@ public sealed class TempApp : IDisposable
     /// <summary>
     /// Initialises a new instance.
     /// </summary>
-    public TempApp()
+    /// <param name="configure">Replaces registrations — a test double — after the production ones.</param>
+    public TempApp(Action<IServiceCollection>? configure = null)
     {
         _installation = Path.Combine(Path.GetTempPath(), "enigma-mobiletasks-app-tests", Guid.NewGuid().ToString("N"));
         Root = Path.Combine(_installation, "lists");
@@ -30,6 +31,7 @@ public sealed class TempApp : IDisposable
         ServiceCollection services = new();
         App.ConfigureServices(services);
         services.AddSingleton(new SettingsLocation(Path.Combine(_installation, "settings.json"), Root));
+        configure?.Invoke(services);
 
         _provider = services.BuildServiceProvider(new ServiceProviderOptions
         {

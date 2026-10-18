@@ -34,6 +34,7 @@ public sealed class ContainerPageFactory : IPageFactory
     public Page Create(ShellPage page) => page switch
     {
         ShellPage.Lists => Bind<ListsPage, ListsPageViewModel>(),
+        ShellPage.Checklist => Bind<ChecklistPage, ChecklistPageViewModel>(),
         _ => throw new ArgumentOutOfRangeException(nameof(page), page, "Unknown page."),
     };
 
