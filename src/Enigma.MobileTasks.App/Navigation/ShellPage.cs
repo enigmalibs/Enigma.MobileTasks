@@ -1,0 +1,12 @@
+namespace Enigma.MobileTasks.App.Navigation;
+
+/// <summary>
+/// The pages the application navigates between.
+/// </summary>
+public enum ShellPage
+{
+    /// <summary>
+    /// Every list on the phone — the root of the navigation stack.
+    /// </summary>
+    Lists,
+}

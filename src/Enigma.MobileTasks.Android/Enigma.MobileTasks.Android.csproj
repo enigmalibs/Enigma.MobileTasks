@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The Android head: platform glue only — the Android Application and Activity, the manifest,
+       Android resources and the launcher icon. Every line of UI lives in Enigma.MobileTasks.App.
+
+       Building it needs the .NET "android" workload and an Android SDK, which is why
+       Enigma.MobileTasks.slnx lists it with <Build Project="false" />: the solution build and test
+       stay green on a machine without them. Build it explicitly — see README.md. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <!-- Avalonia.Android 12.1.1 ships lib/net10.0-android36.0 only; the unversioned TFM resolves to
+         the workload's default API level, 36 for .NET 10. -->
+    <TargetFramework>net10.0-android</TargetFramework>
+    <!-- Android 7.0 — Avalonia.Android 12.1.1 marks AvaloniaAndroidApplication<TApp> as
+         [SupportedOSPlatform("android24.0")], so 24 is the floor the package itself declares, and
+         anything lower leaves CA1416 free to fail this TreatWarningsAsErrors build. -->
+    <SupportedOSPlatformVersion>24</SupportedOSPlatformVersion>
+    <RootNamespace>Enigma.MobileTasks.Android</RootNamespace>
+
+    <!-- Unique on a device; the GitHub organisation in the conventional io.github.<org> form, as the
+         house's mobile showcase does it. -->
+    <ApplicationId>io.github.enigmalibs.mobiletasks</ApplicationId>
+    <ApplicationTitle>Lists</ApplicationTitle>
+    <!-- versionCode must grow with every installable build; versionName follows the solution's
+         Version (Directory.Build.props). -->
+    <ApplicationVersion>1</ApplicationVersion>
+    <ApplicationDisplayVersion>$(Version)</ApplicationDisplayVersion>
+
+    <!-- An .apk installs directly with adb or a file manager; Release would otherwise default to an
+         .aab, which only a store can install. -->
+    <AndroidPackageFormat>apk</AndroidPackageFormat>
+    <!-- As Avalonia's own 12.x template sets it. -->
+    <AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+  </PropertyGroup>
+
+  <!-- Resources/** and Properties/AndroidManifest.xml are picked up by the Android SDK's default
+       items; nothing needs listing. No Version= — Central Package Management. -->
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Android" />
+    <PackageReference Include="Avalonia.Fonts.Inter" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Enigma.MobileTasks.App/Enigma.MobileTasks.App.csproj" />
+  </ItemGroup>
+
+</Project>

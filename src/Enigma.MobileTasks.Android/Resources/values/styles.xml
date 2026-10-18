@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <!-- The activity's Android theme — the frame around Avalonia, not the Avalonia theme itself.
+       AppCompat because Avalonia's activity is an AppCompatActivity; DayNight so the night colour
+       applies when the phone is in dark mode. The window background is the Enigma background colour,
+       so the application opens on the theme's own surface instead of flashing white before Avalonia
+       draws its first frame. -->
+  <style name="EnigmaMobileTasksTheme" parent="@style/Theme.AppCompat.DayNight.NoActionBar">
+    <item name="android:windowActionBar">false</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowBackground">@color/enigma_background</item>
+  </style>
+
+</resources>

@@ -1,0 +1,188 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- Application-wide styles. Merged after FluentTheme so these win, written against the Enigma*
+       brushes so they follow a theme switch, and always behind a class: a bare type selector here
+       would reach into every Fluent control template too. -->
+
+  <Styles.Resources>
+    <!-- The icon scale. Every ei:Icon takes its Size from one of these keys rather than from a
+         number written at the call site. -->
+    <x:Double x:Key="IconSizeSmall">18</x:Double>
+    <x:Double x:Key="IconSizeMedium">24</x:Double>
+    <x:Double x:Key="IconSizeEmptyState">56</x:Double>
+
+    <!-- The square every tappable control occupies at least: Android's 48 dp touch target. Below it
+         a thumb starts costing misses. -->
+    <x:Double x:Key="TouchTargetSize">48</x:Double>
+  </Styles.Resources>
+
+  <!-- The navigation stack. Fluent paints its bar with a fixed grey set in the template itself, so
+       the bar is re-coloured by reaching into the template, the way the desktop library re-colours
+       Fluent's TextBox: surface-coloured, with the theme's own foreground for the title and the back
+       arrow. -->
+  <Style Selector="NavigationPage">
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+    <Setter Property="Background" Value="{DynamicResource EnigmaBackgroundBrush}" />
+  </Style>
+
+  <Style Selector="NavigationPage /template/ Border#PART_NavigationBar">
+    <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceBrush}" />
+    <Setter Property="TextElement.Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <!-- The title. The template sets the presenter's own foreground to a translucent black, and a
+       template value outranks a style, so the colour goes on the text the presenter generates. -->
+  <Style Selector="NavigationPage /template/ ContentPresenter#PART_Header">
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <Style Selector="NavigationPage /template/ ContentPresenter#PART_Header > TextBlock">
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <Style Selector="NavigationPage /template/ Button#PART_BackButton">
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <!-- The one place a page says what it is, inside its content. -->
+  <Style Selector="TextBlock.pagetitle">
+    <Setter Property="FontSize" Value="22" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+  </Style>
+
+  <Style Selector="TextBlock.title">
+    <Setter Property="FontSize" Value="17" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+    <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+  </Style>
+
+  <Style Selector="TextBlock.caption">
+    <Setter Property="FontSize" Value="13" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundSecondaryBrush}" />
+  </Style>
+
+  <!-- A card: a list in the library, a category in the checklist. -->
+  <Style Selector="Border.card">
+    <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource EnigmaBorderSubtleBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="Padding" Value="16" />
+  </Style>
+
+  <!-- Icon-only buttons: invisible until pressed, a round 48 dp target. -->
+  <Style Selector="Button.icon">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="24" />
+    <Setter Property="Padding" Value="0" />
+    <Setter Property="MinWidth" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="HorizontalContentAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundSecondaryBrush}" />
+  </Style>
+
+  <Style Selector="Button.icon /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="24" />
+  </Style>
+
+  <Style Selector="Button.icon:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaPressedBrush}" />
+  </Style>
+
+  <Style Selector="Button.icon:disabled">
+    <Setter Property="Opacity" Value="0.35" />
+  </Style>
+
+  <!-- The button that performs the dialog's or the page's whole purpose. -->
+  <Style Selector="Button.accent">
+    <Setter Property="Background" Value="{DynamicResource EnigmaAccentBrush}" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="20" />
+    <Setter Property="Padding" Value="20,10" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <Style Selector="Button.accent /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaAccentBrush}" />
+    <Setter Property="Foreground" Value="#FFFFFF" />
+    <Setter Property="CornerRadius" Value="20" />
+  </Style>
+
+  <Style Selector="Button.accent:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaAccentHoverBrush}" />
+  </Style>
+
+  <!-- The confirm button of a destructive dialog: the same shape, painted as the error it risks. -->
+  <Style Selector="Button.accent.danger /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaErrorBrush}" />
+  </Style>
+
+  <!-- A flat text button: a dialog's Cancel, the snackbar's Undo. -->
+  <Style Selector="Button.flat">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="20" />
+    <Setter Property="Padding" Value="16,10" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaAccentBrush}" />
+    <Setter Property="FontWeight" Value="SemiBold" />
+  </Style>
+
+  <Style Selector="Button.flat /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="20" />
+  </Style>
+
+  <Style Selector="Button.flat:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaPressedBrush}" />
+  </Style>
+
+  <!-- The transient message at the bottom of the screen. -->
+  <Style Selector="Border.snackbar">
+    <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceHighBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource EnigmaBorderBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="Padding" Value="16,4,4,4" />
+    <Setter Property="MinHeight" Value="{StaticResource TouchTargetSize}" />
+    <Setter Property="BoxShadow" Value="0 4 16 0 #40000000" />
+  </Style>
+
+  <!-- A modal dialog's card, over the overlay scrim. -->
+  <Style Selector="Border.dialog">
+    <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceBrush}" />
+    <Setter Property="BorderBrush" Value="{DynamicResource EnigmaBorderSubtleBrush}" />
+    <Setter Property="BorderThickness" Value="1" />
+    <Setter Property="CornerRadius" Value="20" />
+    <Setter Property="Padding" Value="24,20,16,12" />
+    <Setter Property="BoxShadow" Value="0 8 32 0 #60000000" />
+  </Style>
+
+  <!-- The empty state every page falls back to. -->
+  <Style Selector="StackPanel.emptystate">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="Spacing" Value="8" />
+    <Setter Property="Margin" Value="32" />
+    <Setter Property="MaxWidth" Value="360" />
+  </Style>
+
+  <Style Selector="StackPanel.emptystate > TextBlock">
+    <Setter Property="HorizontalAlignment" Value="Center" />
+    <Setter Property="TextAlignment" Value="Center" />
+    <Setter Property="TextWrapping" Value="Wrap" />
+  </Style>
+
+</Styles>
