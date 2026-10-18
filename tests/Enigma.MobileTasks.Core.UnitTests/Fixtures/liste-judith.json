@@ -1,0 +1,524 @@
+{
+  "schemaVersion": 1,
+  "name": "Liste Judith",
+  "categories": [
+    {
+      "id": "c-mtzxeu79-2-2lsj",
+      "name": "Habits",
+      "items": [
+        {
+          "id": "i-mtzxeu79-3-9zk2",
+          "text": "Bodys",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-4-me1",
+          "text": "Chaussettes",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-5-g5sq",
+          "text": "Chaussures",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-6-txgp",
+          "text": "Pulls",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-7-d5oy",
+          "text": "Veste",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-8-wdr7",
+          "text": "Pantalons",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-9-e2js",
+          "text": "Shorts",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-a-yo2g",
+          "text": "Bavoirs",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-b-cs2j",
+          "text": "Collants",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-c-dec0",
+          "text": "Chaussons",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-d-ypin",
+          "text": "Pantoufles",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-e-do2h",
+          "text": "Training",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-f-fio2",
+          "text": "Combi",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-g-m65s",
+          "text": "Bonnet",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-h-59eb",
+          "text": "Écharpe",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-i-2czn",
+          "text": "Gants",
+          "done": true
+        },
+        {
+          "id": "i-mtzxx80b-2-zgki",
+          "text": "Maillot de bain",
+          "done": true
+        },
+        {
+          "id": "i-mtzybxwh-3-njpt",
+          "text": "Pampers eau",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-j-vvt2",
+      "name": "Dormir",
+      "items": [
+        {
+          "id": "i-mtzxeu79-k-gjy9",
+          "text": "Doudou",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-l-ywsf",
+          "text": "Gigoteuse",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-m-4cue",
+          "text": "Bodys",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-n-2vii",
+          "text": "Pyjama",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-o-uw8p",
+          "text": "Lolettes",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-p-xo2n",
+          "text": "Rascals",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-q-3hg3",
+          "text": "Livres dodo",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-r-b85t",
+          "text": "Veilleuse",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-s-z9jt",
+          "text": "Baby phone",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-t-9tyo",
+          "text": "Ourson",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-u-5xzs",
+          "text": "Lit voyage",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-v-g8fw",
+          "text": "Matelas lit",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-w-gbtg",
+          "text": "Draps lit",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-x-t5wr",
+      "name": "Change / bain",
+      "items": [
+        {
+          "id": "i-mtzxeu79-y-h894",
+          "text": "Linges",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-z-8ycq",
+          "text": "Savon",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-10-lrcq",
+          "text": "Pampers",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-11-m99f",
+          "text": "Lingettes humides",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-12-5tmr",
+          "text": "Ligettes caca",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-13-c9ad",
+          "text": "Crème change",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-14-wwac",
+      "name": "Pharmacie",
+      "items": [
+        {
+          "id": "i-mtzxeu79-15-jrfz",
+          "text": "Suppo",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-16-1myk",
+          "text": "Sirop Algifor",
+          "done": true
+        },
+        {
+          "id": "i-mtzyy0u4-4-7mwv",
+          "text": "Sirop Dafalgan",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-17-j035",
+          "text": "Vitamine D",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-18-8kum",
+          "text": "Brosse à dents",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-19-wkzl",
+          "text": "Dentifrice",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1a-4cdz",
+          "text": "Lavage nez",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1b-ndv",
+          "text": "Aspi venin",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1c-idb6",
+          "text": "Gel Arnica",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1d-u4if",
+          "text": "Pastilles Arnica",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1e-58ps",
+          "text": "Baume magique",
+          "done": true
+        },
+        {
+          "id": "i-mu00ajbi-6-3u5t",
+          "text": "Thermomètre",
+          "done": true
+        },
+        {
+          "id": "i-mu00ambu-7-rdsc",
+          "text": "Coupe ongle",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-1f-6a5f",
+      "name": "Jouets",
+      "items": [
+        {
+          "id": "i-mtzxeu79-1g-p4nc",
+          "text": "Jouets",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1h-hz0o",
+          "text": "Livres",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1i-8yzu",
+          "text": "Maiasaura",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1j-sloo",
+          "text": "Sac Judith",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-1k-gi6l",
+      "name": "Manger",
+      "items": [
+        {
+          "id": "i-mtzxeu79-1l-ivdn",
+          "text": "Bol mixeur",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1m-jz2u",
+          "text": "Chaise haute",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1n-dy3d",
+          "text": "Biberon",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1o-4gof",
+          "text": "Chauffe biberon",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1p-pqft",
+          "text": "Lini",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1q-9rwn",
+          "text": "Bavettes",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1r-myue",
+          "text": "Lait",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1s-f99d",
+          "text": "Purées oléagineux",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1t-6gn5",
+          "text": "Pain",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1u-gcf9",
+          "text": "Huile",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1v-b5qh",
+          "text": "Bamix",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1w-6eax",
+          "text": "Services bébé",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1x-xoa8",
+          "text": "Assiettes",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1y-ner9",
+          "text": "Bols",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-1z-rf2h",
+          "text": "Lavettes",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-20-j952",
+          "text": "Pâtes à rgeutz",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-21-f4ex",
+          "text": "Tasses eau",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-22-kv7r",
+          "text": "Flipidiflop",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-23-mok",
+      "name": "Promener",
+      "items": [
+        {
+          "id": "i-mtzxeu79-24-hwgx",
+          "text": "Couverture",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-25-17y9",
+          "text": "Poussettes",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-26-gvek",
+          "text": "Nid d'ange poussette",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-27-y2sc",
+          "text": "Drap poussette",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-28-6kwl",
+          "text": "Pare soleil poussette",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-29-2v6n",
+          "text": "Pare soleil voiture",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-2a-y0bh",
+          "text": "Porte bébé",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2b-p9w0",
+          "text": "Couverture porte bébé",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2c-acuo",
+          "text": "Veste maman porte bébé",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2d-805x",
+          "text": "Crème solaire",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2e-wlae",
+          "text": "Chapeau",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2f-jxl7",
+          "text": "Lunettes soleil",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2g-aarx",
+          "text": "Lolette",
+          "done": true
+        },
+        {
+          "id": "i-mtzxwsuv-1-vldh",
+          "text": "KWay",
+          "done": true
+        }
+      ]
+    },
+    {
+      "id": "c-mtzxeu79-2h-iuyt",
+      "name": "Autre",
+      "items": [
+        {
+          "id": "i-mtzxeu79-2i-9en2",
+          "text": "Sac isoterme",
+          "done": false
+        },
+        {
+          "id": "i-mtzxeu79-2j-j1ii",
+          "text": "Tire-lait",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2k-dqge",
+          "text": "Sac à langer",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2l-x4qa",
+          "text": "Tapis d'éveil",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2m-ogqc",
+          "text": "Carte d'identité",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2n-ipjx",
+          "text": "Passeport",
+          "done": true
+        },
+        {
+          "id": "i-mtzxeu79-2o-uyep",
+          "text": "Carnet de santé",
+          "done": true
+        },
+        {
+          "id": "i-mu001c66-5-bemr",
+          "text": "Antidérapant bain",
+          "done": true
+        }
+      ]
+    }
+  ]
+}

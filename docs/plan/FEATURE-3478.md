@@ -88,7 +88,7 @@ Acceptance criteria:
 
 ## PHASE02 — JSON file format and compatibility
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase02-json-format
 
 Steps:
