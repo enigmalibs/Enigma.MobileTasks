@@ -130,7 +130,7 @@ Acceptance criteria:
 
 ## PHASE04 — App shell, theme and Android head
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase04-app-shell
 
 Steps:
@@ -233,6 +233,13 @@ Acceptance criteria:
 Steps:
 1. `SettingsPageViewModel`: theme System / Light / Dark (persisted, applied immediately), about
    card (application version), storage card (where lists live, how many).
+1a. *(Added by PHASE04's build.)* Restore live following of the phone's dark mode while the
+   preference is System: PHASE04 resolves System to an explicit Light/Dark (headless Avalonia left the
+   application with no actual variant after Dark → Default, painting every Enigma brush transparent),
+   and Android does not raise `Application.PlatformSettings.ColorValuesChanged`, so a phone switching
+   to dark mode while the app is open is no longer followed. Request `ThemeVariant.Default` for System
+   again and fall back to the explicit variant only when no actual variant resolves; verify on the
+   emulator (`cmd uimode night yes|no`).
 2. README: what the app is, build and install (`dotnet build … -t:Run`, `.apk` publish),
    using it, export/import to and from Enigma.Tasks, the file format, working on it.
 3. Tests: theme persistence and application, render test.

@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <!-- The application's whole UI — App, composition root, pages, ViewModels, services — and none
+         of its platform glue, which lives in Enigma.MobileTasks.Android (Avalonia 12's own
+         cross-platform template shape). A library, because the Android head is the executable;
+         plain net10.0, so every line of it builds and is tested on a machine without the Android
+         workload. -->
+    <OutputType>Library</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Enigma.MobileTasks.App</RootNamespace>
+    <!-- On, every {Binding} is verified against its x:DataType at build time. -->
+    <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+    <!-- Deliberately NOT set: GenerateDocumentationFile. This assembly packs nothing; its public
+         surface is the Android head's, and the members still carry XML comments by convention. -->
+  </PropertyGroup>
+  <!-- No Version= — Central Package Management. No Avalonia.Fonts.Inter here: the font is wired on
+       the AppBuilder, which the Android head owns. No AvaloniaUI.DiagnosticsSupport: its developer
+       tools attach to a desktop window, and a phone has none. -->
+  <ItemGroup>
+    <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Themes.Fluent" />
+    <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Enigma.Icons.Avalonia" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="../Enigma.MobileTasks.Core/Enigma.MobileTasks.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <AvaloniaResource Include="Themes/**" />
+  </ItemGroup>
+  <!-- The composition root stays internal; the unit-test project drives it. -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="Enigma.MobileTasks.App.UnitTests" />
+  </ItemGroup>
+</Project>

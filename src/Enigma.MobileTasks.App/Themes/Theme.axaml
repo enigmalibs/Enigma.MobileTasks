@@ -1,0 +1,14 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+  <!-- The application's theme entry point: the Enigma palette and its brushes, merged in the order
+       the desktop library merges them — Colors.axaml first, because every brush resolves its colour
+       from the layer above it. A ResourceDictionary, so App.axaml merges it with a ResourceInclude,
+       never a StyleInclude. -->
+
+  <ResourceDictionary.MergedDictionaries>
+    <ResourceInclude Source="avares://Enigma.MobileTasks.App/Themes/Colors.axaml" />
+    <ResourceInclude Source="avares://Enigma.MobileTasks.App/Themes/Brushes.axaml" />
+  </ResourceDictionary.MergedDictionaries>
+
+</ResourceDictionary>

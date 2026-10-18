@@ -1,8 +1,15 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/Enigma.MobileTasks.Core/Enigma.MobileTasks.Core.csproj" />
+    <Project Path="src/Enigma.MobileTasks.App/Enigma.MobileTasks.App.csproj" />
+    <!-- Needs the .NET android workload and an Android SDK, so the solution build skips it and stays
+         green without them. Build it explicitly — see README.md. -->
+    <Project Path="src/Enigma.MobileTasks.Android/Enigma.MobileTasks.Android.csproj">
+      <Build Project="false" />
+    </Project>
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Enigma.MobileTasks.Core.UnitTests/Enigma.MobileTasks.Core.UnitTests.csproj" />
+    <Project Path="tests/Enigma.MobileTasks.App.UnitTests/Enigma.MobileTasks.App.UnitTests.csproj" />
   </Folder>
 </Solution>

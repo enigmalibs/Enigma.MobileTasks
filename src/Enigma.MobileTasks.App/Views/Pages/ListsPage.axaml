@@ -1,0 +1,51 @@
+<ContentPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ei="https://github.com/josueclement/Enigma.Icons"
+             xmlns:res="using:Enigma.MobileTasks.App.Resources"
+             xmlns:vm="using:Enigma.MobileTasks.App.ViewModels.Pages"
+             x:Class="Enigma.MobileTasks.App.Views.Pages.ListsPage"
+             x:DataType="vm:ListsPageViewModel"
+             Header="{x:Static res:Strings.ListsHeader}"
+             Background="{DynamicResource EnigmaBackgroundBrush}"
+             Foreground="{DynamicResource EnigmaForegroundBrush}">
+
+  <Grid>
+    <ScrollViewer IsVisible="{Binding !IsEmpty}">
+      <ItemsControl ItemsSource="{Binding Cards}" Margin="16,8,16,96">
+        <ItemsControl.ItemTemplate>
+          <DataTemplate x:DataType="vm:ListCardViewModel">
+            <Border Classes="card" Margin="0,0,0,12">
+              <StackPanel Spacing="10">
+                <Grid ColumnDefinitions="*,Auto">
+                  <TextBlock Classes="title" Text="{Binding Name}" VerticalAlignment="Center" />
+                  <TextBlock Grid.Column="1"
+                             Classes="caption"
+                             Text="{Binding ProgressText}"
+                             VerticalAlignment="Center"
+                             Margin="12,0,0,0" />
+                </Grid>
+                <ProgressBar Value="{Binding Percent}"
+                             Maximum="100"
+                             MinHeight="6"
+                             Height="6"
+                             CornerRadius="3"
+                             Background="{DynamicResource EnigmaSurfaceHighBrush}"
+                             Foreground="{DynamicResource EnigmaAccentBrush}" />
+              </StackPanel>
+            </Border>
+          </DataTemplate>
+        </ItemsControl.ItemTemplate>
+      </ItemsControl>
+    </ScrollViewer>
+
+    <StackPanel Classes="emptystate" IsVisible="{Binding IsEmpty}">
+      <ei:Icon Kind="ListChecks"
+               Size="{StaticResource IconSizeEmptyState}"
+               Foreground="{DynamicResource EnigmaForegroundTertiaryBrush}"
+               HorizontalAlignment="Center" />
+      <TextBlock Classes="title" Text="{x:Static res:Strings.NoListsTitle}" />
+      <TextBlock Classes="caption" Text="{x:Static res:Strings.NoListsHint}" />
+    </StackPanel>
+  </Grid>
+
+</ContentPage>

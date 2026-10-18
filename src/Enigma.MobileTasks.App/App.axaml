@@ -1,0 +1,23 @@
+<!--
+  Default only until the saved preference is applied, which happens before the first view is built:
+  App.ApplyTheme then always requests Light or Dark explicitly — the Enigma palette defines exactly
+  those two dictionaries — and follows the phone's dark mode itself when the preference is System.
+-->
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Enigma.MobileTasks.App.App"
+             RequestedThemeVariant="Default">
+  <Application.Styles>
+    <FluentTheme />
+    <StyleInclude Source="avares://Enigma.MobileTasks.App/Themes/Styles.axaml" />
+  </Application.Styles>
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <!-- The Enigma palette is a ResourceDictionary, so it is a ResourceInclude here and never a
+             StyleInclude. -->
+        <ResourceInclude Source="avares://Enigma.MobileTasks.App/Themes/Theme.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>
