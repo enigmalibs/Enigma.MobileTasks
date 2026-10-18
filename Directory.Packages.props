@@ -10,7 +10,7 @@
 
   <!-- Hosting and DI for the composition root. -->
   <ItemGroup>
-    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.12" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
   </ItemGroup>
 
   <!-- Avalonia — a version-coupled ecosystem: Avalonia, its Android/Fluent/Inter/Headless/Skia
@@ -34,8 +34,8 @@
        of truth the vendored palette is compared against (PaletteParityTests), and its version must
        move together with the vendored Themes/Colors.axaml and Themes/Brushes.axaml. -->
   <ItemGroup>
-    <PackageVersion Include="xunit.v3" Version="4.0.1" />
-    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.11.2" />
+    <PackageVersion Include="xunit.v3" Version="4.0.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0" />
     <PackageVersion Include="Avalonia.Headless" Version="12.1.1" />
     <PackageVersion Include="Avalonia.Skia" Version="12.1.1" />
     <PackageVersion Include="Enigma.Avalonia.Desktop" Version="1.2.0" />

@@ -10,7 +10,12 @@ unchanged. That is not a claim but a test: the suite round-trips the very refere
 proves its own format against.
 
 It paints with the Enigma palette of [Enigma.Avalonia](../Enigma.Avalonia) — the same Light and Dark
-colours as the desktop applications — and follows the phone's dark mode.
+colours as the desktop applications — and follows the phone's dark mode. On the phone it is called
+**Enigma tasks**.
+
+> **What's new in 1.1** — the app is named *Enigma tasks*, the checkboxes line up with their text,
+> and releases are signed with your own key ([docs/RELEASE.md](docs/RELEASE.md)). See
+> [RELEASENOTES.md](RELEASENOTES.md).
 
 ## Using it
 
@@ -99,8 +104,10 @@ dotnet build src/Enigma.MobileTasks.Android -c Release
 adb install src/Enigma.MobileTasks.Android/bin/Release/net10.0-android/io.github.enigmalibs.mobiletasks-Signed.apk
 ```
 
-The Release `.apk` (about 45 MB, trimmed) is signed with the SDK's debug key — fine for your own
-phones, not for a store. Android 7.0 (API 24) or later.
+That Release `.apk` (about 45 MB, trimmed) is signed with the SDK's debug key — fine to try a build
+on your own phone. **A release** is signed with your own key, so every later version can update it in
+place: [docs/RELEASE.md](docs/RELEASE.md) has the commands, from creating the key to checking and
+installing the signed `.apk`. Android 7.0 (API 24) or later.
 
 A plain Debug `dotnet build` does **not** give an installable `.apk`: Debug uses fast deployment,
 which pushes the assemblies separately, so that `.apk` aborts on launch when installed by hand. Use
@@ -110,7 +117,7 @@ which pushes the assemblies separately, so that `.apk` aborts on launch when ins
 
 ```bash
 dotnet build Enigma.MobileTasks.slnx                 # must stay at zero warnings
-dotnet test --solution Enigma.MobileTasks.slnx       # 206 tests
+dotnet test --solution Enigma.MobileTasks.slnx       # 208 tests
 ```
 
 The solution build skips the Android head (`<Build Project="false" />` in the `.slnx`), so it and
@@ -122,7 +129,7 @@ src/Enigma.MobileTasks.Core      the model: lists, operations, the JSON format, 
 src/Enigma.MobileTasks.App       the whole UI (net10.0): App, composition root, pages, ViewModels, services, theme
 src/Enigma.MobileTasks.Android   the Android head (net10.0-android): activity, manifest, resources, icon
 tests/                           xUnit v3 suites for both, including headless Avalonia render tests
-docs/                            the roadmap, the plans, a record per completed piece of work
+docs/                            the release runbook, the roadmap, the plans, a record per completed piece of work
 ```
 
 The model layer knows nothing about the UI — it is ported from Enigma.Tasks' own, rule for rule —

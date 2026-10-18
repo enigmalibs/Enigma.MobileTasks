@@ -25,9 +25,14 @@
     <!-- The name the launcher shows. Also written in MainActivity's Label and the manifest's
          android:label; change the three together. -->
     <ApplicationTitle>Enigma tasks</ApplicationTitle>
-    <!-- versionCode must grow with every installable build; versionName follows the solution's
-         Version (Directory.Build.props). -->
-    <ApplicationVersion>1</ApplicationVersion>
+    <!-- versionName is the solution's Version (Directory.Build.props). versionCode must grow with
+         every release, or Android refuses the update; it is derived from that same Version as
+         major × 10000 + minor × 100 + patch — 1.1.0 is 10100, above 1.0.0's hand-written 1 — so a
+         release bumps one number. Version therefore stays a plain major.minor.patch. -->
+    <_VersionMajor>$([System.Version]::Parse('$(Version)').Major)</_VersionMajor>
+    <_VersionMinor>$([System.Version]::Parse('$(Version)').Minor)</_VersionMinor>
+    <_VersionPatch>$([System.Version]::Parse('$(Version)').Build)</_VersionPatch>
+    <ApplicationVersion>$([MSBuild]::Add($([MSBuild]::Multiply($(_VersionMajor), 10000)), $([MSBuild]::Add($([MSBuild]::Multiply($(_VersionMinor), 100)), $(_VersionPatch)))))</ApplicationVersion>
     <ApplicationDisplayVersion>$(Version)</ApplicationDisplayVersion>
 
     <!-- An .apk installs directly with adb or a file manager; Release would otherwise default to an
