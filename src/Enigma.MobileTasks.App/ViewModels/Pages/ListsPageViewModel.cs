@@ -52,6 +52,7 @@ public sealed class ListsPageViewModel : ObservableObject
 
         NewListCommand = new AsyncRelayCommand(OnNewListAsync);
         ImportCommand = new AsyncRelayCommand(() => _actions.ImportAsync());
+        SettingsCommand = new AsyncRelayCommand(() => _navigation.PushAsync(ShellPage.Settings));
 
         _lists.EntriesChanged += (_, _) => Rebuild();
         _lists.Touched += (_, entry) => Cards.FirstOrDefault(card => ReferenceEquals(card.Entry, entry))?.Refresh();
@@ -79,6 +80,11 @@ public sealed class ListsPageViewModel : ObservableObject
     /// Enigma.Tasks or by another phone.
     /// </summary>
     public AsyncRelayCommand ImportCommand { get; }
+
+    /// <summary>
+    /// Gets the command that opens the Settings page.
+    /// </summary>
+    public AsyncRelayCommand SettingsCommand { get; }
 
     /// <summary>
     /// Opens a list's checklist.

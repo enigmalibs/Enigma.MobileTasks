@@ -14,4 +14,9 @@ public enum ShellPage
     /// The open list's categories and items.
     /// </summary>
     Checklist,
+
+    /// <summary>
+    /// The theme, the storage summary and the version.
+    /// </summary>
+    Settings,
 }

@@ -1,4 +1,4 @@
-**Status:** IN PROGRESS
+**Status:** DONE
 **Type:** FEATURE
 **Branch:** feature/feature-3478-phaseNN-<slug> (one per phase, listed below)
 **Run:** feature/2026-10-18-android-tasks-app
@@ -227,7 +227,7 @@ Acceptance criteria:
 
 ## PHASE08 — Settings page and README
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase08-settings-readme
 
 Steps:

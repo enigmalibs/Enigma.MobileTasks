@@ -24,4 +24,12 @@
   <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPointerOver" Color="#FFFFFF" />
   <SolidColorBrush x:Key="CheckBoxCheckGlyphForegroundCheckedPressed" Color="#FFFFFF" />
 
+  <!-- The same for the theme choice's radio buttons. -->
+  <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFill" Color="{DynamicResource EnigmaAccentColor}" />
+  <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStroke" Color="{DynamicResource EnigmaAccentColor}" />
+  <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPointerOver" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePointerOver" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedFillPressed" Color="{DynamicResource EnigmaAccentHoverColor}" />
+  <SolidColorBrush x:Key="RadioButtonOuterEllipseCheckedStrokePressed" Color="{DynamicResource EnigmaAccentHoverColor}" />
+
 </ResourceDictionary>

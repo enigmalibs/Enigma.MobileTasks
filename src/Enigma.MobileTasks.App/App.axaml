@@ -1,7 +1,7 @@
 <!--
-  Default only until the saved preference is applied, which happens before the first view is built:
-  App.ApplyTheme then always requests Light or Dark explicitly — the Enigma palette defines exactly
-  those two dictionaries — and follows the phone's dark mode itself when the preference is System.
+  Default — follow the phone — until the saved preference is applied, which happens before the first
+  view is built (App.ApplyTheme). The Enigma palette defines a Light and a Dark dictionary; where a
+  platform cannot resolve Default to one of them, ApplyTheme requests the platform's variant itself.
 -->
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"

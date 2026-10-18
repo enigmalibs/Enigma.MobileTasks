@@ -1,0 +1,57 @@
+<ContentPage xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:res="using:Enigma.MobileTasks.App.Resources"
+             xmlns:vm="using:Enigma.MobileTasks.App.ViewModels.Pages"
+             x:Class="Enigma.MobileTasks.App.Views.Pages.SettingsPage"
+             x:DataType="vm:SettingsPageViewModel"
+             Header="{x:Static res:Strings.SettingsHeader}"
+             Background="{DynamicResource EnigmaBackgroundBrush}"
+             Foreground="{DynamicResource EnigmaForegroundBrush}">
+
+  <ScrollViewer>
+    <StackPanel Margin="16,12,16,32" Spacing="20">
+
+      <StackPanel Spacing="8">
+        <TextBlock Classes="title" Text="{x:Static res:Strings.ThemeSection}" Margin="4,0" />
+        <Border Classes="card" Padding="8">
+          <StackPanel>
+            <RadioButton Classes="setting"
+                         GroupName="theme"
+                         Content="{x:Static res:Strings.ThemeSystem}"
+                         IsChecked="{Binding IsSystemTheme, Mode=TwoWay}" />
+            <RadioButton Classes="setting"
+                         GroupName="theme"
+                         Content="{x:Static res:Strings.ThemeLight}"
+                         IsChecked="{Binding IsLightTheme, Mode=TwoWay}" />
+            <RadioButton Classes="setting"
+                         GroupName="theme"
+                         Content="{x:Static res:Strings.ThemeDark}"
+                         IsChecked="{Binding IsDarkTheme, Mode=TwoWay}" />
+          </StackPanel>
+        </Border>
+      </StackPanel>
+
+      <StackPanel Spacing="8">
+        <TextBlock Classes="title" Text="{x:Static res:Strings.StorageSection}" Margin="4,0" />
+        <Border Classes="card">
+          <StackPanel Spacing="8">
+            <TextBlock Text="{Binding StorageSummary}" TextWrapping="Wrap" />
+            <TextBlock Classes="caption" Text="{x:Static res:Strings.StorageHint}" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+      </StackPanel>
+
+      <StackPanel Spacing="8">
+        <TextBlock Classes="title" Text="{x:Static res:Strings.AboutSection}" Margin="4,0" />
+        <Border Classes="card">
+          <StackPanel Spacing="8">
+            <TextBlock Text="{Binding VersionText}" />
+            <TextBlock Classes="caption" Text="{x:Static res:Strings.AboutHint}" TextWrapping="Wrap" />
+          </StackPanel>
+        </Border>
+      </StackPanel>
+
+    </StackPanel>
+  </ScrollViewer>
+
+</ContentPage>

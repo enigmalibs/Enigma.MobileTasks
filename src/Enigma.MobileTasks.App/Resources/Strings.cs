@@ -194,4 +194,39 @@ public static class Strings
 
     /// <summary>The message about several files that could not be imported; {0} is how many.</summary>
     public const string ImportRefusedMany = "{0} files could not be imported — they are not lists this app can read.";
+
+    /// <summary>The Settings page's header, and the accessible name of the button that opens it.</summary>
+    public const string SettingsHeader = "Settings";
+
+    /// <summary>The theme section's title.</summary>
+    public const string ThemeSection = "Theme";
+
+    /// <summary>The theme choice that follows the phone.</summary>
+    public const string ThemeSystem = "System — follow the phone's dark mode";
+
+    /// <summary>The light theme choice.</summary>
+    public const string ThemeLight = "Light";
+
+    /// <summary>The dark theme choice.</summary>
+    public const string ThemeDark = "Dark";
+
+    /// <summary>The storage section's title.</summary>
+    public const string StorageSection = "Your lists";
+
+    /// <summary>Where the lists live; {0} is how many there are.</summary>
+    public const string StorageSummary = "{0} lists, kept in this app's private storage on the phone.";
+
+    /// <summary>How to move a list off the phone and back.</summary>
+    public const string StorageHint =
+        "Use \"Export as JSON\" to keep a copy elsewhere, to open a list in Enigma.Tasks on your computer, or to move it to another phone — and \"Import lists\" to bring one in. Uninstalling the app deletes the lists it holds.";
+
+    /// <summary>The about section's title.</summary>
+    public const string AboutSection = "About";
+
+    /// <summary>The version line; {0} is the version.</summary>
+    public const string VersionLine = "Enigma.MobileTasks {0}";
+
+    /// <summary>What the app is compatible with.</summary>
+    public const string AboutHint =
+        "Lists are JSON files in exactly the format Enigma.Tasks and the Listes web app read and write. Colours from Enigma.Avalonia.";
 }

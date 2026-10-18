@@ -163,11 +163,17 @@ public partial class App : Application
     /// </summary>
     /// <param name="preference">What the user chose.</param>
     /// <remarks>
-    /// System is resolved here, to Light or Dark, rather than handed to Avalonia as
-    /// <c>ThemeVariant.Default</c>: the Enigma palette defines exactly those two dictionaries, and an
-    /// application switched back to Default can be left with no actual variant at all — every Enigma
-    /// brush then resolves to nothing and the screen paints blank. The phone's own switch is followed
-    /// through <see cref="ObserveTheme"/> instead.
+    /// <para>
+    /// System is <c>ThemeVariant.Default</c>, Avalonia's "follow the platform": that is what lets the
+    /// application re-theme the moment the phone switches to dark mode, which Android reports to the
+    /// activity rather than through an event this code could observe.
+    /// </para>
+    /// <para>
+    /// The Enigma palette defines exactly a Light and a Dark dictionary, and a platform that cannot
+    /// resolve Default leaves the application with no actual variant at all — every Enigma brush then
+    /// resolves to nothing and the screen paints blank (the headless test platform does this after Dark
+    /// → Default). Only then is the platform's variant requested explicitly instead.
+    /// </para>
     /// </remarks>
     internal static void ApplyTheme(ThemePreference preference)
     {
@@ -180,8 +186,15 @@ public partial class App : Application
         {
             ThemePreference.Dark => ThemeVariant.Dark,
             ThemePreference.Light => ThemeVariant.Light,
-            _ => SystemVariant(application),
+            _ => ThemeVariant.Default,
         };
+
+        if (preference == ThemePreference.System &&
+            application.ActualThemeVariant != ThemeVariant.Light &&
+            application.ActualThemeVariant != ThemeVariant.Dark)
+        {
+            application.RequestedThemeVariant = SystemVariant(application);
+        }
     }
 
     /// <summary>

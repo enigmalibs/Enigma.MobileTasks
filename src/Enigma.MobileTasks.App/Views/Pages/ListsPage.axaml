@@ -26,6 +26,13 @@
               ToolTip.Tip="{x:Static res:Strings.NewList}">
         <ei:Icon Kind="Plus" Size="{StaticResource IconSizeMedium}" />
       </Button>
+      <Button x:Name="SettingsButton"
+              Classes="icon"
+              Command="{Binding SettingsCommand}"
+              AutomationProperties.Name="{x:Static res:Strings.SettingsHeader}"
+              ToolTip.Tip="{x:Static res:Strings.SettingsHeader}">
+        <ei:Icon Kind="Gear" Size="{StaticResource IconSizeMedium}" />
+      </Button>
     </StackPanel>
   </NavigationPage.TopCommandBar>
 
