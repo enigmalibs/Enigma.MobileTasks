@@ -30,12 +30,13 @@ public sealed class ThemeTests(HeadlessAvaloniaFixture fixture)
     }
 
     /// <summary>
-    /// System is resolved to one of the palette's two variants, never left to Avalonia's Default —
-    /// which, set again after Dark, can leave the application with no actual variant and every Enigma
-    /// brush transparent.
+    /// System always ends on one of the palette's two variants — Avalonia's Default where the platform
+    /// resolves it (so a phone switching to dark mode is followed), the platform's variant requested
+    /// explicitly where it does not. Never no variant at all, which paints every Enigma brush
+    /// transparent.
     /// </summary>
     [Fact]
-    public void ApplyTheme_System_ResolvesToThePlatformsVariant()
+    public void ApplyTheme_System_AlwaysEndsOnLightOrDark()
     {
         fixture.Run(() =>
         {
@@ -43,9 +44,12 @@ public sealed class ThemeTests(HeadlessAvaloniaFixture fixture)
             App.ApplyTheme(ThemePreference.System);
 
             Application application = Application.Current!;
-            Assert.NotEqual(ThemeVariant.Default, application.RequestedThemeVariant);
-            Assert.Equal(App.SystemVariant(application), application.RequestedThemeVariant);
-            Assert.Equal(application.RequestedThemeVariant, application.ActualThemeVariant);
+            Assert.True(
+                application.ActualThemeVariant == ThemeVariant.Light || application.ActualThemeVariant == ThemeVariant.Dark,
+                "Actual variant: " + application.ActualThemeVariant);
+            Assert.True(
+                application.RequestedThemeVariant == ThemeVariant.Default ||
+                application.RequestedThemeVariant == App.SystemVariant(application));
         });
     }
 

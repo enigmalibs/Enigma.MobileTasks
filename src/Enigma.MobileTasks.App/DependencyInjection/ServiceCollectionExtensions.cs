@@ -67,10 +67,12 @@ public static class ServiceCollectionExtensions
             services.AddSingleton<ShellViewModel>();
             services.AddSingleton<ListsPageViewModel>();
             services.AddSingleton<ChecklistPageViewModel>();
+            services.AddSingleton<SettingsPageViewModel>();
 
             services.AddTransient<ShellView>();
             services.AddTransient<ListsPage>();
             services.AddTransient<ChecklistPage>();
+            services.AddTransient<SettingsPage>();
 
             return services;
         }
