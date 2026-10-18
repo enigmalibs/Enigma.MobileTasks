@@ -1,0 +1,44 @@
+<Project>
+
+  <!-- Central Package Management: every PackageReference version in the solution is pinned
+       here so shared dependencies (e.g. Avalonia) cannot drift between projects. Projects
+       reference packages WITHOUT a Version attribute (<PackageReference Include="Foo" />);
+       the version comes from the matching <PackageVersion> below. -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <!-- Hosting and DI for the composition root. -->
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="10.0.13" />
+  </ItemGroup>
+
+  <!-- Avalonia — a version-coupled ecosystem: Avalonia, its Android/Fluent/Inter/Headless/Skia
+       companions, CommunityToolkit.Mvvm and the Enigma icon library are bumped TOGETHER, never one
+       package at a time. 12.1.1 is the exact set Enigma.Tasks and Enigma.Avalonia ship, and
+       satisfies Enigma.Icons.Avalonia 1.0.0's floor of 12.1.0. Avalonia.Android 12.1.1 ships
+       lib/net10.0-android36.0 only, which is why the head targets net10.0-android. -->
+  <ItemGroup>
+    <PackageVersion Include="Avalonia" Version="12.1.1" />
+    <PackageVersion Include="Avalonia.Android" Version="12.1.1" />
+    <PackageVersion Include="Avalonia.Themes.Fluent" Version="12.1.1" />
+    <PackageVersion Include="Avalonia.Fonts.Inter" Version="12.1.1" />
+    <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+    <PackageVersion Include="Enigma.Icons.Avalonia" Version="1.0.0" />
+  </ItemGroup>
+
+  <!-- Tests (MTP-native: xunit.v3 only; Microsoft.Testing.Extensions.CodeCoverage for coverage).
+       No Microsoft.NET.Test.Sdk, no coverlet.collector. Avalonia.Headless renders the real views
+       off-screen and Avalonia.Skia turns those frames into pixels a render assertion can look at.
+       Enigma.Avalonia.Desktop is referenced by the UI test project ONLY: it is the published source
+       of truth the vendored palette is compared against (PaletteParityTests), and its version must
+       move together with the vendored Themes/Colors.axaml and Themes/Brushes.axaml. -->
+  <ItemGroup>
+    <PackageVersion Include="xunit.v3" Version="4.0.2" />
+    <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.12.0" />
+    <PackageVersion Include="Avalonia.Headless" Version="12.1.1" />
+    <PackageVersion Include="Avalonia.Skia" Version="12.1.1" />
+    <PackageVersion Include="Enigma.Avalonia.Desktop" Version="1.2.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- EnigmaBackgroundColor, Light variant. Android resources cannot read XAML, so this repeats the
+       literal from the vendored src/Enigma.MobileTasks.App/Themes/Colors.axaml; change both
+       together. -->
+  <color name="enigma_background">#F7F8FA</color>
+</resources>

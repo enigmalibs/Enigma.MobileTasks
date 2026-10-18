@@ -1,0 +1,85 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="using:Enigma.MobileTasks.App.ViewModels"
+             x:Class="Enigma.MobileTasks.App.Views.ShellView"
+             x:DataType="vm:ShellViewModel"
+             Background="{DynamicResource EnigmaBackgroundBrush}"
+             Foreground="{DynamicResource EnigmaForegroundBrush}"
+             TopLevel.AutoSafeAreaPadding="False">
+
+  <!-- The navigation stack, with the two things drawn over every page: the snackbar and the dialog.
+
+       Safe-area insets are handled exactly once each: the navigation page pads its bar for the status
+       bar and its pages for the gesture bar, and the overlay layer gets the same insets from the
+       code-behind. The top level's own automatic padding is turned off above — left on, it pads this
+       whole view as well, and the bar ends up below an empty strip with the inset added a second
+       time. -->
+
+  <Grid>
+    <PageNavigationHost x:Name="Host" />
+
+    <Panel x:Name="OverlayLayer">
+
+      <Border Classes="snackbar"
+              IsVisible="{Binding Notifications.IsVisible}"
+              VerticalAlignment="Bottom"
+              Margin="16,0,16,16">
+        <Grid ColumnDefinitions="*,Auto">
+          <TextBlock Text="{Binding Notifications.Message}"
+                     TextWrapping="Wrap"
+                     VerticalAlignment="Center"
+                     Margin="0,8" />
+          <Button Grid.Column="1"
+                  Classes="flat"
+                  Content="{Binding Notifications.ActionText}"
+                  Command="{Binding Notifications.ActionCommand}"
+                  IsVisible="{Binding Notifications.HasAction}" />
+        </Grid>
+      </Border>
+
+      <!-- The scrim is a Border with a background so it takes every tap: nothing behind a dialog is
+           reachable while it is open. -->
+      <Border x:Name="DialogScrim"
+              IsVisible="{Binding Dialog.IsOpen}"
+              Background="{DynamicResource EnigmaOverlayBrush}">
+        <Border Classes="dialog"
+                VerticalAlignment="Center"
+                Margin="24"
+                MaxWidth="480">
+          <StackPanel Spacing="16">
+            <TextBlock Classes="title"
+                       Text="{Binding Dialog.Title}"
+                       TextWrapping="Wrap"
+                       TextTrimming="None" />
+            <TextBlock Text="{Binding Dialog.Message}"
+                       IsVisible="{Binding Dialog.HasMessage}"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource EnigmaForegroundSecondaryBrush}" />
+            <TextBox x:Name="PromptInput"
+                     Text="{Binding Dialog.InputText, Mode=TwoWay}"
+                     PlaceholderText="{Binding Dialog.Placeholder}"
+                     IsVisible="{Binding Dialog.IsPrompt}"
+                     TextInputOptions.ReturnKeyType="Done"
+                     MinHeight="{StaticResource TouchTargetSize}"
+                     VerticalContentAlignment="Center">
+              <TextBox.KeyBindings>
+                <KeyBinding Gesture="Enter" Command="{Binding Dialog.ConfirmCommand}" />
+              </TextBox.KeyBindings>
+            </TextBox>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+              <Button Classes="flat"
+                      Content="{Binding Dialog.CancelText}"
+                      Command="{Binding Dialog.CancelCommand}" />
+              <Button Classes="accent"
+                      Classes.danger="{Binding Dialog.IsDestructive}"
+                      Content="{Binding Dialog.ConfirmText}"
+                      Command="{Binding Dialog.ConfirmCommand}" />
+            </StackPanel>
+          </StackPanel>
+        </Border>
+      </Border>
+
+    </Panel>
+  </Grid>
+
+</UserControl>
