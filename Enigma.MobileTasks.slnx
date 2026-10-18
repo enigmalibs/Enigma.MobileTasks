@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Enigma.MobileTasks.Core/Enigma.MobileTasks.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Enigma.MobileTasks.Core.UnitTests/Enigma.MobileTasks.Core.UnitTests.csproj" />
+  </Folder>
+</Solution>

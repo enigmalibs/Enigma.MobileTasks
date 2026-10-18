@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** IN PROGRESS
 **Type:** FEATURE
 **Branch:** feature/feature-3478-phaseNN-<slug> (one per phase, listed below)
 **Run:** feature/2026-10-18-android-tasks-app
@@ -63,7 +63,7 @@ lists as JSON **in exactly the Enigma.Tasks file format**, so that:
 
 ## PHASE01 — Scaffold, model and operations
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase01-scaffold-model
 
 Steps:
