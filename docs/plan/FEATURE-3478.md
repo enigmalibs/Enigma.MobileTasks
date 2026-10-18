@@ -164,7 +164,7 @@ Acceptance criteria:
 
 ## PHASE05 — Lists page
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase05-lists-page
 
 Steps:

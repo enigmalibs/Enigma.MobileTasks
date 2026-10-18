@@ -51,6 +51,7 @@ public static class ServiceCollectionExtensions
         public IServiceCollection AddMobileTasksApp()
         {
             services.AddSingleton<IActiveListService, ActiveListService>();
+            services.AddSingleton<IListActions, ListActions>();
 
             services.AddSingleton<DialogService>();
             services.AddSingleton<IDialogService>(provider => provider.GetRequiredService<DialogService>());
@@ -62,9 +63,11 @@ public static class ServiceCollectionExtensions
 
             services.AddSingleton<ShellViewModel>();
             services.AddSingleton<ListsPageViewModel>();
+            services.AddSingleton<ChecklistPageViewModel>();
 
             services.AddTransient<ShellView>();
             services.AddTransient<ListsPage>();
+            services.AddTransient<ChecklistPage>();
 
             return services;
         }

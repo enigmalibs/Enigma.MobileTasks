@@ -70,10 +70,16 @@ public sealed class HeadlessAvaloniaFixture : IDisposable
     /// </summary>
     /// <param name="work">The work to run.</param>
     /// <remarks>
-    /// Blocking the UI thread on application code is a deadlock: the application awaits with
-    /// <c>ConfigureAwait(true)</c>, so its continuations need the very thread a <c>GetResult()</c>
-    /// would be holding. Pumping instead of blocking is what lets a test drive a real asynchronous
-    /// ViewModel.
+    /// <para>
+    /// Blocking the UI thread on application code is a deadlock: the application awaits on the UI
+    /// context, so its continuations need the very thread a <c>GetResult()</c> would be holding.
+    /// Pumping instead of blocking is what lets a test drive a real asynchronous ViewModel.
+    /// </para>
+    /// <para>
+    /// The pump also ticks the render timer: a navigation push plays a page transition, and headless
+    /// animation time only moves on a render tick. A pump that never ticks waits for a transition that
+    /// never ends — so the pump gives up after <see cref="AsyncTimeout"/> rather than hang the run.
+    /// </para>
     /// </remarks>
     public void RunAsync(Func<Task> work)
     {
@@ -82,9 +88,16 @@ public sealed class HeadlessAvaloniaFixture : IDisposable
         Run(() =>
         {
             Task task = work();
+            DateTime deadline = DateTime.UtcNow + AsyncTimeout;
 
             while (!task.IsCompleted)
             {
+                if (DateTime.UtcNow > deadline)
+                {
+                    throw new TimeoutException("The UI work did not finish within " + AsyncTimeout + ".");
+                }
+
+                AvaloniaHeadlessPlatform.ForceRenderTimerTick();
                 Dispatcher.UIThread.RunJobs();
                 Thread.Sleep(1);
             }
@@ -92,6 +105,11 @@ public sealed class HeadlessAvaloniaFixture : IDisposable
             task.GetAwaiter().GetResult();
         });
     }
+
+    /// <summary>
+    /// Gets how long <see cref="RunAsync"/> waits before it reports the work as stuck.
+    /// </summary>
+    public static TimeSpan AsyncTimeout { get; } = TimeSpan.FromSeconds(10);
 
     /// <summary>
     /// Runs a function on the Avalonia UI thread and returns its result.

@@ -149,6 +149,40 @@
     <Setter Property="Background" Value="{DynamicResource EnigmaPressedBrush}" />
   </Style>
 
+  <!-- The tappable body of a card: the whole surface is the target, and it gives way to the card's
+       own shape rather than painting a button plate of its own. -->
+  <Style Selector="Button.cardbody">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="BorderThickness" Value="0" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="Padding" Value="16,14" />
+    <Setter Property="HorizontalAlignment" Value="Stretch" />
+    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaForegroundBrush}" />
+  </Style>
+
+  <Style Selector="Button.cardbody /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="Transparent" />
+    <Setter Property="CornerRadius" Value="12" />
+  </Style>
+
+  <Style Selector="Button.cardbody:pressed /template/ ContentPresenter#PART_ContentPresenter">
+    <Setter Property="Background" Value="{DynamicResource EnigmaPressedBrush}" />
+  </Style>
+
+  <!-- A list's or a category's progress: a thin accent bar that turns green once finished. -->
+  <Style Selector="ProgressBar.listprogress">
+    <Setter Property="MinHeight" Value="6" />
+    <Setter Property="Height" Value="6" />
+    <Setter Property="CornerRadius" Value="3" />
+    <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceHighBrush}" />
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaAccentBrush}" />
+  </Style>
+
+  <Style Selector="ProgressBar.listprogress.complete">
+    <Setter Property="Foreground" Value="{DynamicResource EnigmaSuccessBrush}" />
+  </Style>
+
   <!-- The transient message at the bottom of the screen. -->
   <Style Selector="Border.snackbar">
     <Setter Property="Background" Value="{DynamicResource EnigmaSurfaceHighBrush}" />

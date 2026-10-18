@@ -1,5 +1,6 @@
 using System.Linq;
 using System.Runtime.InteropServices;
+using Avalonia.Automation;
 using Avalonia.Controls;
 using Avalonia.Headless;
 using Avalonia.LogicalTree;
@@ -11,6 +12,7 @@ using Enigma.MobileTasks.App.Navigation;
 using Enigma.MobileTasks.App.Services;
 using Enigma.MobileTasks.App.UnitTests.Infrastructure;
 using Enigma.MobileTasks.App.ViewModels;
+using Enigma.MobileTasks.App.ViewModels.Pages;
 using Enigma.MobileTasks.App.Views;
 using Enigma.MobileTasks.App.Views.Pages;
 using Enigma.MobileTasks.Core.Settings;
@@ -73,6 +75,40 @@ public sealed class ShellRenderTests(HeadlessAvaloniaFixture fixture)
             Assert.True(
                 pixel == Color.Parse("#F7F8FA") || pixel == Color.Parse("#1E1F22"),
                 "Expected the Enigma background, found " + pixel);
+
+            window.Close();
+        });
+    }
+
+    /// <summary>
+    /// The real path a tap takes: the card's command opens the list and pushes its checklist on the
+    /// stack, and the page's "+" sits in the navigation bar, bound to the page's command.
+    /// </summary>
+    [Fact]
+    public void OpeningACard_PushesTheChecklistPage()
+    {
+        using TempApp app = new();
+        app.WriteRaw("liste-judith.json", TestLists.ReadJudithJson());
+
+        fixture.RunAsync(async () =>
+        {
+            ShellView shell = App.CreateShell(app.Services);
+            Window window = new() { Width = 400, Height = 800, Content = shell };
+            window.Show();
+            await app.Get<ShellViewModel>().InitializeAsync();
+            window.UpdateLayout();
+
+            ShellNavigationPage root = Assert.IsType<ShellNavigationPage>(shell.NavigationHost.Page);
+            Button add = shell.GetVisualDescendants().OfType<Button>().Single(button => button.Name == "NewListButton");
+            Assert.Same(app.Get<ListsPageViewModel>().NewListCommand, add.Command);
+            Assert.Equal("New list", AutomationProperties.GetName(add));
+
+            await app.Get<ListsPageViewModel>().Cards[0].OpenCommand.ExecuteAsync(null);
+            window.UpdateLayout();
+
+            Assert.Equal(2, root.StackDepth);
+            ChecklistPage checklist = Assert.IsType<ChecklistPage>(root.NavigationStack[^1]);
+            Assert.Equal("Liste Judith", checklist.Header);
 
             window.Close();
         });
