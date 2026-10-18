@@ -106,7 +106,7 @@ Acceptance criteria:
 
 ## PHASE03 — Device storage and settings
 
-**Status:** TODO
+**Status:** DONE
 **Branch:** feature/feature-3478-phase03-device-storage
 
 Steps:
