@@ -363,3 +363,7 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Android signing keys - never in the repository (see docs/RELEASE.md)
+*.keystore
+*.jks

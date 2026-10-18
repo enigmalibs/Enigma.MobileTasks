@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** DONE
 **Type:** FEATURE
 **Branch:** feature/feature-6f1b-release-1-1-0
 **Run:** bugfix/2026-10-18-checkbox-rename-release
