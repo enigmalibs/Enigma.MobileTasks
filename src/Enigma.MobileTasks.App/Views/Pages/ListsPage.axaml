@@ -12,6 +12,13 @@
   <!-- The page's actions sit in the navigation bar, at the thumb-reachable end of the title. -->
   <NavigationPage.TopCommandBar>
     <StackPanel x:Name="CommandBar" Orientation="Horizontal" Margin="0,0,4,0">
+      <Button x:Name="ImportButton"
+              Classes="icon"
+              Command="{Binding ImportCommand}"
+              AutomationProperties.Name="{x:Static res:Strings.Import}"
+              ToolTip.Tip="{x:Static res:Strings.Import}">
+        <ei:Icon Kind="FileArrowDown" Size="{StaticResource IconSizeMedium}" />
+      </Button>
       <Button x:Name="NewListButton"
               Classes="icon"
               Command="{Binding NewListCommand}"
@@ -64,6 +71,11 @@
                           <ei:Icon Kind="Copy" Size="{StaticResource IconSizeSmall}" />
                         </MenuItem.Icon>
                       </MenuItem>
+                      <MenuItem Header="{x:Static res:Strings.Export}" Command="{Binding ExportCommand}">
+                        <MenuItem.Icon>
+                          <ei:Icon Kind="Export" Size="{StaticResource IconSizeSmall}" />
+                        </MenuItem.Icon>
+                      </MenuItem>
                       <Separator />
                       <MenuItem Header="{x:Static res:Strings.Delete}" Command="{Binding DeleteCommand}">
                         <MenuItem.Icon>
@@ -92,6 +104,10 @@
               Margin="0,12,0,0"
               Command="{Binding NewListCommand}"
               Content="{x:Static res:Strings.NewList}" />
+      <Button Classes="flat"
+              HorizontalAlignment="Center"
+              Command="{Binding ImportCommand}"
+              Content="{x:Static res:Strings.ImportFromFile}" />
     </StackPanel>
   </Grid>
 

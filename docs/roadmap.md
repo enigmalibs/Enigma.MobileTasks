@@ -15,5 +15,5 @@ Row order is the intended build order — the topmost `TODO` is built first.
 | - PHASE04    | App shell, theme and Android head  | DONE        | (in FEATURE-3478.md)      |
 | - PHASE05    | Lists page                         | DONE        | (in FEATURE-3478.md)      |
 | - PHASE06    | Checklist page and editing         | DONE        | (in FEATURE-3478.md)      |
-| - PHASE07    | JSON import and export             | TODO        | (in FEATURE-3478.md)      |
+| - PHASE07    | JSON import and export             | DONE        | (in FEATURE-3478.md)      |
 | - PHASE08    | Settings page and README           | TODO        | (in FEATURE-3478.md)      |

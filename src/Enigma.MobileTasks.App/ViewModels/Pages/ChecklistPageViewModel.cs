@@ -67,6 +67,8 @@ public sealed class ChecklistPageViewModel : ObservableObject
         UntickAllCommand = new RelayCommand(() => Editor.SetAllDone(null, false));
         AddCategoryCommand = new AsyncRelayCommand(OnAddCategoryAsync);
         RenameListCommand = new AsyncRelayCommand(OnRenameListAsync);
+        ExportCommand = new AsyncRelayCommand(
+            () => _lists.Current is { } entry ? _actions.ExportAsync(entry) : Task.CompletedTask);
 
         _lists.CurrentChanged += (_, _) => Open();
         _lists.EntriesChanged += (_, _) => Title = _lists.Current?.List.Name ?? string.Empty;
@@ -145,6 +147,11 @@ public sealed class ChecklistPageViewModel : ObservableObject
     /// Gets the command that renames the list, and its file with it.
     /// </summary>
     public AsyncRelayCommand RenameListCommand { get; }
+
+    /// <summary>
+    /// Gets the command that exports the open list as a JSON file.
+    /// </summary>
+    public AsyncRelayCommand ExportCommand { get; }
 
     /// <summary>
     /// Gets the editor the cards and rows change the list through.

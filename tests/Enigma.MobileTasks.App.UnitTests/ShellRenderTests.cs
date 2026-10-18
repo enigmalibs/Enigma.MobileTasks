@@ -103,6 +103,9 @@ public sealed class ShellRenderTests(HeadlessAvaloniaFixture fixture)
             Button add = shell.GetVisualDescendants().OfType<Button>().Single(button => button.Name == "NewListButton");
             Assert.Same(app.Get<ListsPageViewModel>().NewListCommand, add.Command);
             Assert.Equal("New list", AutomationProperties.GetName(add));
+            Button import = shell.GetVisualDescendants().OfType<Button>().Single(button => button.Name == "ImportButton");
+            Assert.Same(app.Get<ListsPageViewModel>().ImportCommand, import.Command);
+            Assert.Equal("Import lists", AutomationProperties.GetName(import));
 
             await app.Get<ListsPageViewModel>().Cards[0].OpenCommand.ExecuteAsync(null);
             window.UpdateLayout();

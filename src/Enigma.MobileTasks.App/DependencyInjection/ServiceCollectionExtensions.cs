@@ -58,6 +58,8 @@ public static class ServiceCollectionExtensions
             services.AddSingleton<IDialogService>(provider => provider.GetRequiredService<DialogService>());
             services.AddSingleton<NotificationService>();
             services.AddSingleton<INotificationService>(provider => provider.GetRequiredService<NotificationService>());
+            services.AddSingleton<StorageFilePicker>();
+            services.AddSingleton<IFilePicker>(provider => provider.GetRequiredService<StorageFilePicker>());
 
             services.AddSingleton<IPageFactory, ContainerPageFactory>();
             services.AddSingleton<INavigationService, NavigationService>();

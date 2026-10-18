@@ -34,6 +34,11 @@
                 <ei:Icon Kind="PencilSimple" Size="{StaticResource IconSizeSmall}" />
               </MenuItem.Icon>
             </MenuItem>
+            <MenuItem Header="{x:Static res:Strings.Export}" Command="{Binding ExportCommand}">
+              <MenuItem.Icon>
+                <ei:Icon Kind="Export" Size="{StaticResource IconSizeSmall}" />
+              </MenuItem.Icon>
+            </MenuItem>
           </MenuFlyout>
         </Button.Flyout>
       </Button>

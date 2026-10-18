@@ -51,6 +51,7 @@ public sealed class ListsPageViewModel : ObservableObject
         _navigation = navigation;
 
         NewListCommand = new AsyncRelayCommand(OnNewListAsync);
+        ImportCommand = new AsyncRelayCommand(() => _actions.ImportAsync());
 
         _lists.EntriesChanged += (_, _) => Rebuild();
         _lists.Touched += (_, entry) => Cards.FirstOrDefault(card => ReferenceEquals(card.Entry, entry))?.Refresh();
@@ -72,6 +73,12 @@ public sealed class ListsPageViewModel : ObservableObject
     /// Gets the command that asks for a name, creates the list and opens it.
     /// </summary>
     public AsyncRelayCommand NewListCommand { get; }
+
+    /// <summary>
+    /// Gets the command that imports lists from files picked in the system picker — exported by
+    /// Enigma.Tasks or by another phone.
+    /// </summary>
+    public AsyncRelayCommand ImportCommand { get; }
 
     /// <summary>
     /// Opens a list's checklist.
@@ -109,6 +116,13 @@ public sealed class ListsPageViewModel : ObservableObject
     /// <param name="card">The list's card.</param>
     /// <returns>A task that completes once the copy is written.</returns>
     internal Task DuplicateAsync(ListCardViewModel card) => _actions.DuplicateAsync(card.Entry);
+
+    /// <summary>
+    /// Exports the list as a JSON file, where the user picks.
+    /// </summary>
+    /// <param name="card">The list's card.</param>
+    /// <returns>A task that completes once the file is written, or the user cancelled.</returns>
+    internal Task ExportAsync(ListCardViewModel card) => _actions.ExportAsync(card.Entry);
 
     /// <summary>
     /// Asks, then deletes the list.
