@@ -13,9 +13,8 @@ It paints with the Enigma palette of [Enigma.Avalonia](../Enigma.Avalonia) — t
 colours as the desktop applications — and follows the phone's dark mode. On the phone it is called
 **Enigma tasks**.
 
-> **What's new in 1.1** — the app is named *Enigma tasks*, the checkboxes line up with their text,
-> and releases are signed with your own key ([docs/RELEASE.md](docs/RELEASE.md)). See
-> [RELEASENOTES.md](RELEASENOTES.md).
+> **What's new in 1.2** — tap **+** and keep typing: the quick-add box keeps the cursor. Every item
+> also has a trash button, in the everyday view too. See [RELEASENOTES.md](RELEASENOTES.md).
 
 ## Using it
 

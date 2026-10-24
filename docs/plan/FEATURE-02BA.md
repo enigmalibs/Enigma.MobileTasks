@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** DONE
 **Type:** FEATURE
 **Branch:** feature/feature-02ba-release-1-2-0
 **Run:** feature/2026-10-24-release-1-2-0
