@@ -117,7 +117,7 @@ which pushes the assemblies separately, so that `.apk` aborts on launch when ins
 
 ```bash
 dotnet build Enigma.MobileTasks.slnx                 # must stay at zero warnings
-dotnet test --solution Enigma.MobileTasks.slnx       # 208 tests
+dotnet test --solution Enigma.MobileTasks.slnx       # 210 tests
 ```
 
 The solution build skips the Android head (`<Build Project="false" />` in the `.slnx`), so it and

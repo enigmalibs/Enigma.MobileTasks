@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** DONE
 **Type:** FEATURE
 **Branch:** feature/feature-055a-quickadd-focus
 **Run:** feature/2026-10-24-quickadd-focus-trash
