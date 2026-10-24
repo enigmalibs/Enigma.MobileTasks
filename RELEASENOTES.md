@@ -1,3 +1,33 @@
+# Enigma.MobileTasks v1.2.0 Release Notes
+
+Faster list editing: tapping **+** in the quick-add box leaves the cursor ready for the next item,
+and every item has a trash button, so you can remove items one tap at a time, for example while
+shopping.
+
+## New Features
+
+- **Tap + and keep typing.** In edit mode, adding an item with a category's **+** button leaves the
+  cursor in that category's *Add an item* box, and the keyboard stays up. It used to drop the focus,
+  so the box had to be tapped again for every item. Enter works as before.
+- **A trash button on every item.** Each item row ends with a trash button, in the everyday view as
+  well as in edit mode. One tap removes the item; the message that announces it offers **Undo**,
+  which puts it back where it was. The trash stays in the same place in both modes, and edit mode
+  adds the item's ⋮ menu to its left.
+- **A shorter item menu.** The item's ⋮ menu now offers *Rename*, *Move up* and *Move down*. Delete
+  is the trash button next to it. A category's menu is unchanged.
+
+## Dependencies
+
+- No changes. The Avalonia set (`Avalonia`, `Avalonia.Android`, `Avalonia.Themes.Fluent`,
+  `Avalonia.Fonts.Inter`, `Avalonia.Headless`, `Avalonia.Skia`) is still held at **12.1.1**, while
+  12.1.4 is available. It moves as one set, together with `CommunityToolkit.Mvvm` and
+  `Enigma.Icons.Avalonia`, as a change of its own.
+
+## Version
+
+- Released: **1.2.0** (versionCode 10200). It updates 1.1.0 in place, lists included, when signed
+  with the same key.
+
 # Enigma.MobileTasks v1.1.0 Release Notes
 
 The app gets its name — **Enigma tasks** — its checkboxes line up with their text, and its releases

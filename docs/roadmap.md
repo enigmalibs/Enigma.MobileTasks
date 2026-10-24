@@ -22,4 +22,4 @@ Row order is the intended build order — the topmost `TODO` is built first.
 | FEATURE-6F1B | Release 1.1.0 and signed APK guide    | DONE   | docs/plan/FEATURE-6F1B.md |
 | FEATURE-055A | Focus quick-add box after +           | DONE   | docs/plan/FEATURE-055A.md |
 | FEATURE-9AEF | Trash button on every item row        | DONE   | docs/plan/FEATURE-9AEF.md |
-| FEATURE-02BA | Release 1.2.0                         | TODO   | docs/plan/FEATURE-02BA.md |
+| FEATURE-02BA | Release 1.2.0                         | DONE   | docs/plan/FEATURE-02BA.md |
