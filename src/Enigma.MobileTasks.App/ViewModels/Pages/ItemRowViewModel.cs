@@ -9,7 +9,8 @@ using Enigma.MobileTasks.Core.Model;
 namespace Enigma.MobileTasks.App.ViewModels.Pages;
 
 /// <summary>
-/// One item of a category: a row to tick, and — in edit mode — a menu to rename, move or delete it.
+/// One item of a category: a row to tick, a trash button to delete it, and — in edit mode — a menu to
+/// rename or move it.
 /// </summary>
 public sealed class ItemRowViewModel : ObservableObject
 {
@@ -57,6 +58,7 @@ public sealed class ItemRowViewModel : ObservableObject
             if (SetProperty(ref field, value))
             {
                 OnPropertyChanged(nameof(ActionsLabel));
+                OnPropertyChanged(nameof(DeleteLabel));
             }
         }
     } = string.Empty;
@@ -87,6 +89,11 @@ public sealed class ItemRowViewModel : ObservableObject
     /// Gets the accessible name of the row's menu button.
     /// </summary>
     public string ActionsLabel => string.Format(CultureInfo.CurrentCulture, Strings.ItemActionsFor, Text);
+
+    /// <summary>
+    /// Gets the accessible name of the row's trash button.
+    /// </summary>
+    public string DeleteLabel => string.Format(CultureInfo.CurrentCulture, Strings.DeleteItemFor, Text);
 
     /// <summary>
     /// Gets the command that renames the item.
