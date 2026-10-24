@@ -1,4 +1,4 @@
-**Status:** TODO
+**Status:** DONE
 **Type:** FEATURE
 **Branch:** feature/feature-9aef-row-trash-button
 **Run:** feature/2026-10-24-quickadd-focus-trash
