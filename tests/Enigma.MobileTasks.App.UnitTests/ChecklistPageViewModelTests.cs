@@ -177,6 +177,27 @@ public sealed class ChecklistPageViewModelTests
     }
 
     [Fact]
+    public async Task DeleteLabel_NamesTheItem_AndFollowsARename()
+    {
+        using TempApp app = new(RecordingNavigation.Register);
+        ChecklistPageViewModel page = await OpenJudithAsync(app);
+        DialogService dialog = app.Get<DialogService>();
+        ItemRowViewModel row = page.Categories[0].Items[0];
+        bool raised = false;
+        row.PropertyChanged += (_, e) => raised |= e.PropertyName == nameof(ItemRowViewModel.DeleteLabel);
+
+        Assert.Equal("Delete Bodys", row.DeleteLabel);
+
+        Task renaming = row.RenameCommand.ExecuteAsync(null);
+        dialog.InputText = "Bodies";
+        dialog.ConfirmCommand.Execute(null);
+        await renaming;
+
+        Assert.Equal("Delete Bodies", row.DeleteLabel);
+        Assert.True(raised);
+    }
+
+    [Fact]
     public async Task DeletingAnItem_OffersUndo_AndUndoPutsItBackWhereItWas()
     {
         using TempApp app = new(RecordingNavigation.Register);

@@ -151,6 +151,9 @@ public static class Strings
     /// <summary>The accessible name of an item's menu button; {0} is the item.</summary>
     public const string ItemActionsFor = "Actions for {0}";
 
+    /// <summary>The accessible name of an item's trash button; {0} is the item.</summary>
+    public const string DeleteItemFor = "Delete {0}";
+
     /// <summary>The message after something was deleted; {0} is what.</summary>
     public const string Deleted = "\"{0}\" deleted.";
 

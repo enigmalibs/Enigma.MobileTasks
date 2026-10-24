@@ -27,12 +27,12 @@ colours as the desktop applications — and follows the phone's dark mode. On th
 - **Reset a list** for the next trip with *Untick everything*, in the page's ⋮ menu or in a
   category's.
 - **Fold a category** by tapping its heading. Which cards are folded is remembered per list.
-- **Edit mode** (the pencil) reveals everything structural: a ⋮ menu on every category and every item
-  (rename, move up, move down, delete), a quick-add box under each category — type, press Enter, type
-  the next one — and *Add a category*. A new, empty list opens in edit mode. The everyday view stays a
-  clean checklist.
-- **Undo** a deletion from the message that announces it. Deleting a category that still holds items
-  asks first.
+- **Edit mode** (the pencil) reveals everything structural: a ⋮ menu on every category (rename, move
+  up, move down, delete) and every item (rename, move up, move down), a quick-add box under each
+  category — type, press Enter, type the next one — and *Add a category*. A new, empty list opens in
+  edit mode. The everyday view stays a clean checklist.
+- **Delete an item** with the trash at the right end of its row — in the everyday view too. **Undo** a
+  deletion from the message that announces it. Deleting a category that still holds items asks first.
 - **Settings** — the theme (System, Light or Dark), how many lists the phone holds, the version.
 
 ## Moving lists between the phone, the desktop and another phone
@@ -117,7 +117,7 @@ which pushes the assemblies separately, so that `.apk` aborts on launch when ins
 
 ```bash
 dotnet build Enigma.MobileTasks.slnx                 # must stay at zero warnings
-dotnet test --solution Enigma.MobileTasks.slnx       # 210 tests
+dotnet test --solution Enigma.MobileTasks.slnx       # 214 tests
 ```
 
 The solution build skips the Android head (`<Build Project="false" />` in the `.slnx`), so it and
