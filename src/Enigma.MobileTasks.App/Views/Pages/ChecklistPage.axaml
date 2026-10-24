@@ -179,7 +179,9 @@
                       </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <!-- Quick add: type, press Enter, type the next one — the box keeps its focus. -->
+                    <!-- Quick add: type, press Enter or tap "+", type the next one — the box keeps its
+                         focus. The "+" never takes the focus itself, so a tap leaves the cursor and the
+                         phone's keyboard where they are. -->
                     <Grid ColumnDefinitions="*,Auto" Margin="4,6,0,0" IsVisible="{Binding Page.IsEditing}">
                       <TextBox Classes="quickadd"
                                Text="{Binding QuickAddText, Mode=TwoWay}"
@@ -191,7 +193,9 @@
                       </TextBox>
                       <Button Grid.Column="1"
                               Classes="icon"
+                              Focusable="False"
                               Command="{Binding AddItemCommand}"
+                              Click="OnQuickAddClick"
                               AutomationProperties.Name="{x:Static res:Strings.AddItem}">
                         <ei:Icon Kind="Plus" Size="{StaticResource IconSizeMedium}" />
                       </Button>
