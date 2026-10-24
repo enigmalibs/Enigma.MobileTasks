@@ -139,7 +139,9 @@
                     <ItemsControl ItemsSource="{Binding Items}">
                       <ItemsControl.ItemTemplate>
                         <DataTemplate x:DataType="vm:ItemRowViewModel">
-                          <Grid ColumnDefinitions="*,Auto">
+                          <!-- The trash closes every row, in both modes, so it never moves under the thumb;
+                               edit mode slides its menu in beside it. -->
+                          <Grid ColumnDefinitions="*,Auto,Auto">
                             <CheckBox Classes="row" IsChecked="{Binding IsDone, Mode=TwoWay}">
                               <TextBlock Classes="label" Text="{Binding Text}" TextWrapping="Wrap" />
                             </CheckBox>
@@ -165,21 +167,23 @@
                                       <ei:Icon Kind="ArrowDown" Size="{StaticResource IconSizeSmall}" />
                                     </MenuItem.Icon>
                                   </MenuItem>
-                                  <Separator />
-                                  <MenuItem Header="{x:Static res:Strings.Delete}" Command="{Binding DeleteCommand}">
-                                    <MenuItem.Icon>
-                                      <ei:Icon Kind="Trash" Size="{StaticResource IconSizeSmall}" />
-                                    </MenuItem.Icon>
-                                  </MenuItem>
                                 </MenuFlyout>
                               </Button.Flyout>
+                            </Button>
+                            <Button Grid.Column="2"
+                                    Classes="icon"
+                                    Command="{Binding DeleteCommand}"
+                                    AutomationProperties.Name="{Binding DeleteLabel}">
+                              <ei:Icon Kind="Trash" Size="{StaticResource IconSizeMedium}" />
                             </Button>
                           </Grid>
                         </DataTemplate>
                       </ItemsControl.ItemTemplate>
                     </ItemsControl>
 
-                    <!-- Quick add: type, press Enter, type the next one — the box keeps its focus. -->
+                    <!-- Quick add: type, press Enter or tap "+", type the next one — the box keeps its
+                         focus. The "+" never takes the focus itself, so a tap leaves the cursor and the
+                         phone's keyboard where they are. -->
                     <Grid ColumnDefinitions="*,Auto" Margin="4,6,0,0" IsVisible="{Binding Page.IsEditing}">
                       <TextBox Classes="quickadd"
                                Text="{Binding QuickAddText, Mode=TwoWay}"
@@ -191,7 +195,9 @@
                       </TextBox>
                       <Button Grid.Column="1"
                               Classes="icon"
+                              Focusable="False"
                               Command="{Binding AddItemCommand}"
+                              Click="OnQuickAddClick"
                               AutomationProperties.Name="{x:Static res:Strings.AddItem}">
                         <ei:Icon Kind="Plus" Size="{StaticResource IconSizeMedium}" />
                       </Button>

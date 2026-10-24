@@ -20,3 +20,6 @@ Row order is the intended build order — the topmost `TODO` is built first.
 | BUG-7F85     | Checkboxes misaligned with their text | DONE   | docs/plan/BUG-7F85.md     |
 | FEATURE-0CA0 | Rename the app to "Enigma tasks"      | DONE   | docs/plan/FEATURE-0CA0.md |
 | FEATURE-6F1B | Release 1.1.0 and signed APK guide    | DONE   | docs/plan/FEATURE-6F1B.md |
+| FEATURE-055A | Focus quick-add box after +           | DONE   | docs/plan/FEATURE-055A.md |
+| FEATURE-9AEF | Trash button on every item row        | DONE   | docs/plan/FEATURE-9AEF.md |
+| FEATURE-02BA | Release 1.2.0                         | DONE   | docs/plan/FEATURE-02BA.md |
